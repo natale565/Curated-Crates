@@ -2,12 +2,12 @@ const { Schema, model } = require('mongoose');
 
 const orderSchema = new Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
     box: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'SubscriptionBox',
         required: true,
     },
