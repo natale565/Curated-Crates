@@ -17,7 +17,7 @@ const orderSchema = new Schema({
         default: 'active'
     },
     startDate: {
-        type: Data,
+        type: Date,
         required: true,
         default: Date.now
     },
