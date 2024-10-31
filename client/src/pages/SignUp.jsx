@@ -1,9 +1,11 @@
-function SignUp() {
+import SignUp from '../components/SignUp';
+
+function SignUpPage() {
     return (
      <>
-     <p>sign up</p>
+     <SignUp />
      </>
     );
 }
 
-export default SignUp;
+export default SignUpPage;

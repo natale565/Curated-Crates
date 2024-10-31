@@ -2,7 +2,7 @@ import { Avatar, Box, TextField, Checkbox, Container, Paper, Typography, FormCon
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 // import { Link as RouterLink } from 'react-router-dom';
 
-const SignIn = () => {
+const SignUp = () => {
     const handleSubmit = () => console.log('SignIn');
     return (
         <Container maxwidth='xs'>
@@ -18,7 +18,7 @@ const SignIn = () => {
                 <LockOutlinedIcon />
             </Avatar>
             <Typography component='h1' variant='h5' sx={{textAlign: 'center'}}>
-                Sign In
+                Sign Up
             </Typography>
             <Box 
             component='form' 
@@ -27,7 +27,7 @@ const SignIn = () => {
                 <TextField placeholder='Enter username' fullWidth required autoFocus sx={{mb: 2}}/>
                 <TextField placeholder='Enter password' fullWidth required type='password' />
                 <FormControlLabel control={<Checkbox value='remember' color='primary' />} label='Remember me'/>
-                <Button type='submit' fullWidth variant='contained' sx={{mt: 1}}>Sign In</Button>
+                <Button type='submit' fullWidth variant='contained' sx={{mt: 1}}>Sign Up</Button>
             </Box>
             {/* <Grid container justifyContent='space-between' sx={{mt: 1}}>
                 <Grid item>
@@ -42,4 +42,4 @@ const SignIn = () => {
     )
 }
 
-export default SignIn;
+export default SignUp;

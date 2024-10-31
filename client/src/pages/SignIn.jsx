@@ -1,8 +1,9 @@
+import SignIn from '../components/SignIn';
 
 function signIn(){
     return (
         <>
-        <p>Sign In</p>
+        < SignIn />
         </>
     );
 } 
