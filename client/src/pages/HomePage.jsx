@@ -1,4 +1,5 @@
 import About from '../components/About';
+import DifferentBoxes from '../components/DifferentBoxes';
 
 function HomePage() {
     return (
@@ -6,6 +7,7 @@ function HomePage() {
             <h1>Welcome to the Home Page</h1>
 
             <About />
+            <DifferentBoxes />
         </div>
     );
 }
