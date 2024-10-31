@@ -34,7 +34,7 @@ const resolvers = {
 
             return { token, user };
         },
-        addSubscriptonBox: async (parent, { title, description, price, shippingFrequency, items }) => {
+        addSubscriptionBox: async (parent, { title, description, price, shippingFrequency, items }) => {
             const newBox = await SubscriptionBox.create({ title, description, price, shippingFrequency, items })
                 return await newBox.save();
         },
