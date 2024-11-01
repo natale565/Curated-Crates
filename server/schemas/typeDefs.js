@@ -6,8 +6,8 @@ const typeDefs = `
     }
     
     type SubscriptionBox {
-        id: ID
-        title: String
+        _id: ID
+        name: String
         description: String
         price: Float
         shippingFrequency: String
@@ -16,7 +16,7 @@ const typeDefs = `
     }
 
     type Order {
-        id: ID
+        _id: ID
         user: User
         box: SubscriptionBox
         status: String
@@ -26,7 +26,7 @@ const typeDefs = `
     }
 
     type Review {
-        id: ID
+        _id: ID
         user: User
         box: SubscriptionBox
         rating: Int
@@ -34,18 +34,34 @@ const typeDefs = `
         createdAt: String
     }
 
+    type Checkout {
+        session: ID
+    }
+
     type Auth {
-        token: ID!
+        token: ID
         user: User
+    }
+    
+    input SubscriptionBoxInput {
+        _id: ID
+        name: String
+        description: String
+        price: Float
+        shippingFrequency: String
+        items: [String]
+        image: String
     }
 
     type Query {
         me: User   
         getSubscriptionBoxes: [SubscriptionBox]
-        getSubscriptionBox(id: ID!): SubscriptionBox
+        getSubscriptionBox(_id: ID!): SubscriptionBox
         getUserOrders(userId: ID): [Order]
-        getOrder(id: ID): Order
+        getOrder(_id: ID): Order
         getBoxReviews(boxId: ID): [Review]
+        checkout(SubscriptionBox: [SubscriptionBoxInput]): Checkout
+
     }
 
     type Mutation {
@@ -54,10 +70,9 @@ const typeDefs = `
         addSubscriptionBox(title: String!, description: String!, price: Float!, shippingFrequency: String!, items:[String]): SubscriptionBox
         updateSubscriptionBox(id: ID!, title: String, description: String, price: Float, shippingFrequency: String, items: [String]): SubscriptionBox
         deleteSubscriptionBox(id: ID!): Boolean
-        createOrder(boxId: ID): Order
+        addOrder(boxId: ID): Order
         updateOrderStatus(id: ID, status: String): Order
         addReview(boxId: ID, rating: Int, content: String): Review
-
     }
 `;
 

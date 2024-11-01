@@ -18,12 +18,12 @@ async function seedDatabase() {
         await Review.deleteMany({});
         console.log('Old data deleted!');
 
-        const userPromises = users.map(async user => {
+        const userPromises = users.map(async (user) => {
             const saltRounds = 10;
-            this.password = await bcrypt.hash(this.password, saltRounds);
+            user.password = await bcrypt.hash(user.password, saltRounds);
             return User.create(user)
         });
-        const savedUsers = await Promise.all(userPromise);
+        const savedUsers = await Promise.all(userPromises);
         console.log('Users created!');
 
         const savedBoxes = await SubscriptionBox.insertMany(subscriptionBoxes);
@@ -42,7 +42,7 @@ async function seedDatabase() {
         await Promise.all(orderPromises);
         console.log('Orders created!');
 
-        const reviewPromises = reviews.map(review => {
+        const reviewPromises = reviews.map((review) => {
             return Review.create({
                 user: savedUsers[review.userIndex]._id,
                 box: savedBoxes[review.boxIndex]._id,
@@ -57,7 +57,9 @@ async function seedDatabase() {
     } catch (error) {
         console.error('Error seeding database:', error);
     } finally {
-        mongoose.connection.close();
+        mongoose.connection.close(() => {
+            console.log('Database connection closed.')
+        });
     }
 }
 
