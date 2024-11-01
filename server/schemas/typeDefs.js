@@ -60,6 +60,8 @@ const typeDefs = `
         getUserOrders(userId: ID): [Order]
         getOrder(_id: ID): Order
         getBoxReviews(boxId: ID): [Review]
+        checkout(SubscriptionBox: [SubscriptionBoxInput]): Checkout
+
     }
 
     type Mutation {
@@ -71,7 +73,6 @@ const typeDefs = `
         addOrder(boxId: ID): Order
         updateOrderStatus(id: ID, status: String): Order
         addReview(boxId: ID, rating: Int, content: String): Review
-        checkout(SubscriptionBox: [SubscriptionBoxInput]): Checkout
     }
 `;
 
