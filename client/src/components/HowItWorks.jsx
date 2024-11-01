@@ -7,21 +7,21 @@ function Steps() {
                 <Box component="div" sx={{ flex: 1, minHeight: '150px' }}>
                     <h2 style={{ textAlign: 'center' }}>Step 1</h2>
                     <Box component="section" sx={{ p: 2, border: '1px solid grey', height: '100%' }}>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur officia hic saepe maxime quo incidunt itaque possimus ut, beatae corrupti. Saepe dolore debitis illum et pariatur nulla aut, assumenda esse.
+                        Choose Your Box – Begin by exploring our three unique box options. Each is thoughtfully crafted to bring you joy, discovery, and quality.
                     </Box>
                 </Box>
 
                 <Box component="div" sx={{ flex: 1, minHeight: '150px' }}>
                     <h2 style={{ textAlign: 'center' }}>Step 2</h2>
                     <Box component="section" sx={{ p: 2, border: '1px solid grey', height: '100%' }}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo suscipit nam voluptate, accusantium consectetur, repellat rem est id facilis culpa eligendi sint! Voluptate placeat sed ex quae quis nihil voluptas?
+                       Pick Your Tier – Select a tier that matches your desired experience. Higher tiers offer an even greater assortment of premium items, tailored to enhance each delivery.
                     </Box>
                 </Box>
 
                 <Box component="div" sx={{ flex: 1, minHeight: '150px' }}>
                     <h2 style={{ textAlign: 'center' }}>Step 3</h2>
                     <Box component="section" sx={{ p: 2, border: '1px solid grey', height: '100%' }}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi non nihil culpa labore odio laborum quae necessitatibus magni quisquam officiis minima, assumenda in nostrum illum reprehenderit? Deleniti iste temporibus fugit!
+                        Get Your Crate – Sit back and relax! Your curated crate will arrive right at your doorstep, ready to surprise and delight you.
                     </Box>
                 </Box>
             </Box>
