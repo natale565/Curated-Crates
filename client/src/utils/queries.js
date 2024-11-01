@@ -85,6 +85,9 @@ query getBoxReviews($boxId: ID!) {
 }
 `;
 
+export const ADD_USER = gql`
+mutation `
+
 export const CHECKOUT = gql`
     mutation checkout($SubscriptionBox: [SubscriptionBoxInput]) {
       checkout(SubscriptionBox: $SubscriptionBox) {

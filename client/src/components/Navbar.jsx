@@ -37,8 +37,9 @@
 // export default NavBar;
 
 import { AppBar, Toolbar, Typography, Stack, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-function NavBar({ currentPage, handlePageChange }) {
+function NavBar() {
     return (
         <AppBar position='static'>
             <Toolbar>
@@ -47,15 +48,15 @@ function NavBar({ currentPage, handlePageChange }) {
                 </Typography>
                 <Stack direction='row' spacing={2}>
                     <Button
+                        component={Link}
+                        to="/"
                         color='inherit'
-                        onClick={() => handlePageChange("HomePage")}
-                        className={currentPage === "HomePage" ? "nav-link active" : "nav-link"}
                         sx={{
                             transition: 'all 0.3s ease',
                             position: 'relative',
                             overflow: 'hidden',
                             '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)', // Adjusted glow
+                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
                                 animation: 'glow 1.5s infinite alternate',
                             },
                         }}
@@ -64,15 +65,15 @@ function NavBar({ currentPage, handlePageChange }) {
                     </Button>
 
                     <Button
+                        component={Link}
+                        to="/how-it-works"
                         color='inherit'
-                        onClick={() => handlePageChange("HowItWorks")}
-                        className={currentPage === "HowItWorks" ? "nav-link active" : "nav-link"}
                         sx={{
                             transition: 'all 0.3s ease',
                             position: 'relative',
                             overflow: 'hidden',
                             '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)', // Adjusted glow
+                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
                                 animation: 'glow 1.5s infinite alternate',
                             },
                         }}
@@ -81,15 +82,15 @@ function NavBar({ currentPage, handlePageChange }) {
                     </Button>
 
                     <Button
+                        component={Link}
+                        to="/signup"
                         color='inherit'
-                        onClick={() => handlePageChange("SignUp")}
-                        className={currentPage === "SignUp" ? "nav-link active" : "nav-link"}
                         sx={{
                             transition: 'all 0.3s ease',
                             position: 'relative',
                             overflow: 'hidden',
                             '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)', // Adjusted glow
+                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
                                 animation: 'glow 1.5s infinite alternate',
                             },
                         }}
@@ -98,15 +99,15 @@ function NavBar({ currentPage, handlePageChange }) {
                     </Button>
 
                     <Button
+                        component={Link}
+                        to="/signin"
                         color='inherit'
-                        onClick={() => handlePageChange("SignIn")}
-                        className={currentPage === "SignIn" ? "nav-link active" : "nav-link"}
                         sx={{
                             transition: 'all 0.3s ease',
                             position: 'relative',
                             overflow: 'hidden',
                             '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)', // Adjusted glow
+                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
                                 animation: 'glow 1.5s infinite alternate',
                             },
                         }}
@@ -132,4 +133,3 @@ function NavBar({ currentPage, handlePageChange }) {
 }
 
 export default NavBar;
-

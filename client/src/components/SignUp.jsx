@@ -3,13 +3,13 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
-import { ADD_USER } from '../utils/mutations';
+import { REGISTER } from '../utils/mutations';
 // import { Link as RouterLink } from 'react-router-dom';
 
 //eslint-disable-next-line
 function SignUp(props) {
     const [formState, setFormState] = useState({ name: '', email: '', password: '', rememberMe: false });
-    const [addUser, { error }] = useMutation(ADD_USER);
+    const [addUser, { error }] = useMutation(REGISTER);
 
     const handleSubmit = async (event) => {
       event.preventDefault();
