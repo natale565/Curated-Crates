@@ -38,6 +38,7 @@
 
 import { AppBar, Toolbar, Typography, Stack, Button } from '@mui/material';
 
+// eslint-disable-next-line react/prop-types
 function NavBar({ currentPage, handlePageChange }) {
     return (
         <AppBar position='static'>
