@@ -38,7 +38,7 @@ const orders = [
     },
     {
         userIndex: 0,
-        boxIndex,
+        boxIndex: 0,
         status: 'active',
         startDate: new Date(),
         endDate: new Date(new Date().setMonth(new Date().getMonth()+1))
