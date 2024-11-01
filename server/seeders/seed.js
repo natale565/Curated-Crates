@@ -57,10 +57,10 @@ async function seedDatabase() {
     } catch (error) {
         console.error('Error seeding database:', error);
     } finally {
-        mongoose.connection.close(() => {
+        mongoose.connection.close();
             console.log('Database connection closed.')
-        });
-    }
-}
+        };
+};
+
 
 seedDatabase();

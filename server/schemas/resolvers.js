@@ -46,9 +46,13 @@ const resolvers = {
         },
     },
     Mutation: {
-        register: async (parent, { name, email, password }) => {
-            const user = await User.create({ name, email, password });
-            const token = signToken(user);
+        register: async (parent, { name, email, password })=> {
+            const existingUser = await User.findOne({ email });
+            if (existingUser) {
+                throw new AuthenticationError('User already exists');
+            }
+            const user = await user.Create({ name, email, password });
+            const token = token = signToken(user);
             return { token, user };
         },
         login: async (parent, { email, password }) => {

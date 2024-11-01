@@ -49,7 +49,7 @@ export const ADD_ORDER= gql`
 
 export const UPDATE_ORDER_STATUS = gql`
     mutation updateOrderStatus($id: ID!, $status: String!) {
-    updateOrderStatus(idL $id, status: $status) {
+    updateOrderStatus(id: $id, status: $status) {
         _id
         status    
     }
@@ -57,16 +57,16 @@ export const UPDATE_ORDER_STATUS = gql`
 `;
 
 export const ADD_REVIEW = gql`
-    ($boxId: ID!, $rating: Int!, $content: String!) {
-     addReview(boxId: $boxId, rating: $rating, content: $content) {
-        _id
-        rating
-        content
-        user {
+    mutation addReview($boxId: ID!, $rating: Int!, $content: String!) {
+        addReview(boxId: $boxId, rating: $rating, content: $content) {
             _id
-        }   
-    }  
-}
+            rating
+            content
+            user {
+                _id
+            }   
+        }  
+    }
 `;
 
 export const ADD_SUBSCRIPTION_BOX = gql `
