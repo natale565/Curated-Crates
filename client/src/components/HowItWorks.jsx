@@ -1,34 +1,32 @@
 import Box from '@mui/material/Box';
 
-function HowItWorks() {
-    return(
+function Steps() {
+    return (
         <>
-         <Box component="section" sx={{ p: 2, border: '1px solid grey' }}>
+            <Box component="div" sx={{ display: 'flex', gap: 2 }}>
+                <Box component="div" sx={{ flex: 1, minHeight: '150px' }}>
+                    <h2 style={{ textAlign: 'center' }}>Step 1</h2>
+                    <Box component="section" sx={{ p: 2, border: '1px solid grey', height: '100%' }}>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur officia hic saepe maxime quo incidunt itaque possimus ut, beatae corrupti. Saepe dolore debitis illum et pariatur nulla aut, assumenda esse.
+                    </Box>
+                </Box>
 
-            <h2>Step 1</h2>
-    
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis error repellat ut facilis illo tempora dolorum, eaque iure maiores quidem sed, quos perspiciatis suscipit eum itaque, harum totam nihil quisquam.
+                <Box component="div" sx={{ flex: 1, minHeight: '150px' }}>
+                    <h2 style={{ textAlign: 'center' }}>Step 2</h2>
+                    <Box component="section" sx={{ p: 2, border: '1px solid grey', height: '100%' }}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo suscipit nam voluptate, accusantium consectetur, repellat rem est id facilis culpa eligendi sint! Voluptate placeat sed ex quae quis nihil voluptas?
+                    </Box>
+                </Box>
 
-    </Box>
-
-     <Box component="section" sx={{ p: 2, border: '1px solid grey' }}>
-
-            <h2>Step 2</h2>
-    
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati voluptatum quae corrupti fugit laboriosam aliquid voluptates similique reiciendis, rem dolorum deleniti delectus expedita culpa illum asperiores eos? Iusto, rem! Culpa?
-
-    </Box>
-
-     <Box component="section" sx={{ p: 2, border: '1px solid grey' }}>
-
-            <h2>Step 3</h2>
-    
-Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia molestias officiis officia saepe corrupti cum suscipit sequi at, temporibus laboriosam iste? Nulla, perspiciatis quibusdam earum natus possimus facere sed nostrum.
-
-    </Box>
-    
+                <Box component="div" sx={{ flex: 1, minHeight: '150px' }}>
+                    <h2 style={{ textAlign: 'center' }}>Step 3</h2>
+                    <Box component="section" sx={{ p: 2, border: '1px solid grey', height: '100%' }}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi non nihil culpa labore odio laborum quae necessitatibus magni quisquam officiis minima, assumenda in nostrum illum reprehenderit? Deleniti iste temporibus fugit!
+                    </Box>
+                </Box>
+            </Box>
         </>
     );
 }
 
-export default HowItWorks;
+export default Steps;
