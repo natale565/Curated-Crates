@@ -24,7 +24,7 @@ const SignIn = () => {
             component='form' 
             onSubmit={handleSubmit} 
             noValidate sx={{mt: 1}}>
-                <TextField placeholder='Enter username' fullWidth required autoFocus sx={{mb: 2}}/>
+                <TextField placeholder='Enter email' fullWidth required autoFocus sx={{mb: 2}}/>
                 <TextField placeholder='Enter password' fullWidth required type='password' />
                 <FormControlLabel control={<Checkbox value='remember' color='primary' />} label='Remember me'/>
                 <Button type='submit' fullWidth variant='contained' sx={{mt: 1}}>Sign In</Button>
