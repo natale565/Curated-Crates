@@ -1,6 +1,7 @@
 const typeDefs = `
     type User {
         _id: ID
+        name: String
         email: String
         password: String
     }
@@ -67,7 +68,7 @@ const typeDefs = `
     type Mutation {
         register(name: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addSubscriptionBox(title: String!, description: String!, price: Float!, shippingFrequency: String!, items:[String]): SubscriptionBox
+        addSubscriptionBox(name: String!, description: String!, price: Float!, shippingFrequency: String!, items:[String]): SubscriptionBox
         updateSubscriptionBox(id: ID!, title: String, description: String, price: Float, shippingFrequency: String, items: [String]): SubscriptionBox
         deleteSubscriptionBox(id: ID!): Boolean
         addOrder(boxId: ID): Order
