@@ -82,7 +82,42 @@ function NavBar({ isAuthenticated, onLogout }) {
                         How It Works
                     </Button>
                     
-                    {!isAuthenticated ? (
+                    {isAuthenticated ? (
+                        <>
+                            <Button
+                                component={Link}
+                                to="/dash"
+                                color='inherit'
+                                sx={{
+                                    transition: 'all 0.3s ease',
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    '&:hover': {
+                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glow 1.5s infinite alternate',
+                                    },
+                                }}
+                            >
+                                Dashboard
+                            </Button>
+
+                            <Button
+                                onClick={onLogout}
+                                color='inherit'
+                                sx={{
+                                    transition: 'all 0.3s ease',
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    '&:hover': {
+                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glow 1.5s infinite alternate',
+                                    },
+                                }}
+                            >
+                                Sign Out
+                            </Button>
+                        </>
+                    ) : (
                         <>
                             <Button
                                 component={Link}
@@ -118,22 +153,6 @@ function NavBar({ isAuthenticated, onLogout }) {
                                 Sign In
                             </Button>
                         </>
-                    ) : (
-                        <Button
-                            onClick={onLogout}
-                            color='inherit'
-                            sx={{
-                                transition: 'all 0.3s ease',
-                                position: 'relative',
-                                overflow: 'hidden',
-                                '&:hover': {
-                                    boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
-                                    animation: 'glow 1.5s infinite alternate',
-                                },
-                            }}
-                        >
-                            Sign Out
-                        </Button>
                     )}
                 </Stack>
             </Toolbar>
