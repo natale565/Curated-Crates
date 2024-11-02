@@ -35,11 +35,12 @@
 // }
 
 // export default NavBar;
-
+import React from 'react';
 import { AppBar, Toolbar, Typography, Stack, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-function NavBar() {
+// eslint-disable-next-line react/prop-types
+function NavBar({ isAuthenticated, onLogout }) {
     return (
         <AppBar position='static'>
             <Toolbar>
@@ -80,40 +81,60 @@ function NavBar() {
                     >
                         How It Works
                     </Button>
+                    
+                    {!isAuthenticated ? (
+                        <>
+                            <Button
+                                component={Link}
+                                to="/signup"
+                                color='inherit'
+                                sx={{
+                                    transition: 'all 0.3s ease',
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    '&:hover': {
+                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glow 1.5s infinite alternate',
+                                    },
+                                }}
+                            >
+                                Sign Up
+                            </Button>
 
-                    <Button
-                        component={Link}
-                        to="/signup"
-                        color='inherit'
-                        sx={{
-                            transition: 'all 0.3s ease',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
-                                animation: 'glow 1.5s infinite alternate',
-                            },
-                        }}
-                    >
-                        Sign Up
-                    </Button>
-
-                    <Button
-                        component={Link}
-                        to="/signin"
-                        color='inherit'
-                        sx={{
-                            transition: 'all 0.3s ease',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
-                                animation: 'glow 1.5s infinite alternate',
-                            },
-                        }}
-                    >
-                        Sign In
-                    </Button>
+                            <Button
+                                component={Link}
+                                to="/signin"
+                                color='inherit'
+                                sx={{
+                                    transition: 'all 0.3s ease',
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    '&:hover': {
+                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glow 1.5s infinite alternate',
+                                    },
+                                }}
+                            >
+                                Sign In
+                            </Button>
+                        </>
+                    ) : (
+                        <Button
+                            onClick={onLogout}
+                            color='inherit'
+                            sx={{
+                                transition: 'all 0.3s ease',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                '&:hover': {
+                                    boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
+                                    animation: 'glow 1.5s infinite alternate',
+                                },
+                            }}
+                        >
+                            Sign Out
+                        </Button>
+                    )}
                 </Stack>
             </Toolbar>
             <style>
