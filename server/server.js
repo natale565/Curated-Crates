@@ -36,3 +36,5 @@ const startApolloServer = async () => {
         });
     });
 };
+
+startApolloServer();
