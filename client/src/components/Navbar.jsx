@@ -40,11 +40,7 @@ import { AppBar, Toolbar, Typography, Stack, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-
-function NavBar({ currentPage, handlePageChange }) {
-
 function NavBar({ isAuthenticated, onLogout }) {
-
     return (
         <AppBar position='static'>
             <Toolbar>
