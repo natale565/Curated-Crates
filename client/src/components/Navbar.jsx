@@ -35,11 +35,16 @@
 // }
 
 // export default NavBar;
-
+import React from 'react';
 import { AppBar, Toolbar, Typography, Stack, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
+
 function NavBar({ currentPage, handlePageChange }) {
+
+function NavBar({ isAuthenticated, onLogout }) {
+
     return (
         <AppBar position='static'>
             <Toolbar>
@@ -48,15 +53,15 @@ function NavBar({ currentPage, handlePageChange }) {
                 </Typography>
                 <Stack direction='row' spacing={2}>
                     <Button
+                        component={Link}
+                        to="/"
                         color='inherit'
-                        onClick={() => handlePageChange("HomePage")}
-                        className={currentPage === "HomePage" ? "nav-link active" : "nav-link"}
                         sx={{
                             transition: 'all 0.3s ease',
                             position: 'relative',
                             overflow: 'hidden',
                             '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)', // Adjusted glow
+                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
                                 animation: 'glow 1.5s infinite alternate',
                             },
                         }}
@@ -65,55 +70,75 @@ function NavBar({ currentPage, handlePageChange }) {
                     </Button>
 
                     <Button
+                        component={Link}
+                        to="/how-it-works"
                         color='inherit'
-                        onClick={() => handlePageChange("HowItWorks")}
-                        className={currentPage === "HowItWorks" ? "nav-link active" : "nav-link"}
                         sx={{
                             transition: 'all 0.3s ease',
                             position: 'relative',
                             overflow: 'hidden',
                             '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)', // Adjusted glow
+                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
                                 animation: 'glow 1.5s infinite alternate',
                             },
                         }}
                     >
                         How It Works
                     </Button>
+                    
+                    {!isAuthenticated ? (
+                        <>
+                            <Button
+                                component={Link}
+                                to="/signup"
+                                color='inherit'
+                                sx={{
+                                    transition: 'all 0.3s ease',
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    '&:hover': {
+                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glow 1.5s infinite alternate',
+                                    },
+                                }}
+                            >
+                                Sign Up
+                            </Button>
 
-                    <Button
-                        color='inherit'
-                        onClick={() => handlePageChange("SignUp")}
-                        className={currentPage === "SignUp" ? "nav-link active" : "nav-link"}
-                        sx={{
-                            transition: 'all 0.3s ease',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)', // Adjusted glow
-                                animation: 'glow 1.5s infinite alternate',
-                            },
-                        }}
-                    >
-                        Sign Up
-                    </Button>
-
-                    <Button
-                        color='inherit'
-                        onClick={() => handlePageChange("SignIn")}
-                        className={currentPage === "SignIn" ? "nav-link active" : "nav-link"}
-                        sx={{
-                            transition: 'all 0.3s ease',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)', // Adjusted glow
-                                animation: 'glow 1.5s infinite alternate',
-                            },
-                        }}
-                    >
-                        Sign In
-                    </Button>
+                            <Button
+                                component={Link}
+                                to="/signin"
+                                color='inherit'
+                                sx={{
+                                    transition: 'all 0.3s ease',
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    '&:hover': {
+                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glow 1.5s infinite alternate',
+                                    },
+                                }}
+                            >
+                                Sign In
+                            </Button>
+                        </>
+                    ) : (
+                        <Button
+                            onClick={onLogout}
+                            color='inherit'
+                            sx={{
+                                transition: 'all 0.3s ease',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                '&:hover': {
+                                    boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
+                                    animation: 'glow 1.5s infinite alternate',
+                                },
+                            }}
+                        >
+                            Sign Out
+                        </Button>
+                    )}
                 </Stack>
             </Toolbar>
             <style>
@@ -133,4 +158,3 @@ function NavBar({ currentPage, handlePageChange }) {
 }
 
 export default NavBar;
-

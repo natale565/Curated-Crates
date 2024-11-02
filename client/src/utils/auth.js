@@ -1,38 +1,56 @@
-import decode from 'jwt-decode';
+import * as jwt_decode from 'jwt-decode';
 
 class AuthService {
     getProfile() {
-        return decode(this.getToken());
-    }
+        const token = this.getToken();
+        if (!token) return null;
+        
+        try {
+            return jwt_decode(token);
+        } catch (error) {
+            console.error("Failed to decode token:", error);
+            return null;
+        }
+    }    
 
     loggedIn() {
         const token = this.getToken();
-        return token && !this.isTokenExpired(token) ? true : false;
+        return !!token && !this.isTokenExpired(token);
     }
 
     isTokenExpired(token) {
-        const decoded = decode(token);
-
-        if (decoded.exp < Date.now() / 1000) {
-        localStorage.removeItem('id_token');
-        return true;
+        if (!token) return true;
+        
+        try {
+            const decoded = jwt_decode(token);
+            return decoded.exp < Date.now() / 1000;
+        } catch (error) {
+            console.error("Failed to decode token:", error);
+            return true;
         }
-        return false;
     }
+    
+
 
     getToken() {
         return localStorage.getItem('id_token');
     }
 
     login(idToken) {
+        if (!idToken) {
+            console.error("Invalid token provided to AuthService.");
+            return;
+        }
         localStorage.setItem('id_token', idToken);
         window.location.assign('/');
     }
-
+    
     logout() {
-        localStorage.removeItem('id_token');
-        window.location.reload();
-    }
+    localStorage.removeItem('id_token');
+    window.location.reload(); 
+}
+
+    
 }
 
 export default new AuthService();

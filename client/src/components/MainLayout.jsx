@@ -1,37 +1,42 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage.jsx';
 import HowItWorks from '../pages/HowItWorksPage.jsx';
 import SignUp from '../pages/SignUp.jsx';
 import SignIn from '../pages/SignIn.jsx';
 import Footer from './Footer';
 import NavBar from './Navbar';
+import Auth from '../utils/auth.js';
 
 function MainLayout() {
-    const [currentPage, setCurrentPage] = useState('HomePage');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const renderPage = () => {
-        if (currentPage === 'HomePage') {
-            return <HomePage />;
+    useEffect(() => {
+        const token = Auth.getToken();
+        if (token) {
+            setIsAuthenticated(true);
         }
-        if (currentPage === 'HowItWorks') {
-            return <HowItWorks />;
-        }
-        if (currentPage === 'SignUp') {
-            return <SignUp />;
-        }
-        if (currentPage === 'SignIn') {
-            return <SignIn />;
-        }
-    };
+    }, []);
 
-    const handlePageChange = (page) => setCurrentPage(page);
+    const handleLogout = () => {
+        Auth.logout();
+        setIsAuthenticated(false);
+    }; 
 
     return (
-        <>
-            <NavBar handlePageChange={handlePageChange} />
-            {renderPage()}
+        <Router>
+            <NavBar 
+            isAuthenticated={isAuthenticated}
+            onLogout={handleLogout}
+            />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/how-it-works" element={<HowItWorks />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/signin" element={<SignIn />} />
+            </Routes>
             <Footer />
-        </>
+        </Router>
     );
 }
 

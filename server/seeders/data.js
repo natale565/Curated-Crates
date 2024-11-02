@@ -13,14 +13,14 @@ const users = [
 
 const subscriptionBoxes = [
     {
-        title: 'Monthly Coffee Box',
+        name: 'Monthly Coffee Box',
         description: 'A box of premium coffee beans from around the world.',
         price: 39.99,
         shippingFrequency: 'monthly',
         items: ['Columbian Coffee-Huila', 'Ethopian Coffee-Yirgacheffe Region', 'Kenyan-Arabica ']
     },
     {
-        title: 'Gourmet Snack Box',
+        name: 'Gourmet Snack Box',
         description: 'A variety of gourmet snacks for your enjoyment.',
         price: 29.99,
         shippingFrequency: 'monthly',
@@ -38,7 +38,7 @@ const orders = [
     },
     {
         userIndex: 0,
-        boxIndex,
+        boxIndex: 0,
         status: 'active',
         startDate: new Date(),
         endDate: new Date(new Date().setMonth(new Date().getMonth()+1))
