@@ -45,12 +45,11 @@ class AuthService {
         window.location.assign('/');
     }
     
-    
-
     logout() {
-        localStorage.removeItem('id_token');
-        window.location.replace('/'); 
-    }
+    localStorage.removeItem('id_token');
+    window.location.reload(); 
+}
+
     
 }
 
