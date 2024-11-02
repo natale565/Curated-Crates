@@ -51,9 +51,9 @@ const resolvers = {
             if (existingUser) {
                 throw new AuthenticationError('User already exists');
             }
-            const user = await user.Create({ name, email, password });
-            const token = token = signToken(user);
-            return { token, user };
+            const user = await User.create({ name, email, password });
+            const token = signToken(user);
+            return { token, user: { _id: user._id, name: user.name, email: user.email } };
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });

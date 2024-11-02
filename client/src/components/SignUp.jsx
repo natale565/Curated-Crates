@@ -9,30 +9,44 @@ import { REGISTER } from '../utils/mutations';
 //eslint-disable-next-line
 function SignUp(props) {
     const [formState, setFormState] = useState({ name: '', email: '', password: '', rememberMe: false });
-    const [addUser, { error }] = useMutation(REGISTER);
+    const [register, { error }] = useMutation(REGISTER);
 
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
-        const mutationResponse = await addUser({
-          variables: {
-            name: formState.name,
-            email: formState.email,
-            password: formState.password,
-          },
-        });
-        const token = mutationResponse.data.addUser.token;
-        Auth.login(token);
+          const mutationResponse = await register({
+              variables: {
+                  name: formState.name,
+                  email: formState.email,
+                  password: formState.password,
+              },
+          });
+            
+          const { data } = mutationResponse;
+          const token = mutationResponse?.data?.register?.token;
+          const user = mutationResponse?.data?.register?.user;
   
-        if (formState.rememberMe) {
-          localStorage.setItem('email', formState.email);
-        } else {
-          localStorage.removeItem('email');
-        }
+          console.log("data", data);
+          console.log("Token:", token);
+          console.log("User:", user);
+  
+          if (!token) {
+              throw new Error("Token is missing in the response.");
+          }
+  
+          // Initialize login only if the token exists
+          Auth.login(token);
+  
+          if (formState.rememberMe) {
+              localStorage.setItem('email', formState.email);
+          } else {
+              localStorage.removeItem('email');
+          }
       } catch (e) {
-        console.error(e); 
+          console.error("Error during sign up:", e);
       }
-    };
+  };
+  
   
     const handleChange = (event) => {
       const { name, value, type, checked } = event.target;
