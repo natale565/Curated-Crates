@@ -1,4 +1,5 @@
-import { FaFacebookSquare, FaInstagram } from "react-icons/fa";
+import { FaFacebookSquare, FaInstagram,  } from "react-icons/fa";
+import { MdOutlineEmail } from "react-icons/md";
 import { Toolbar, Typography, Stack, Box, Container } from '@mui/material';
 
 function Footer() {
@@ -22,6 +23,22 @@ function Footer() {
                 
                 {/* Icons on the Right */}
                 <Stack direction="row" spacing={2} style={{ position: 'absolute', right: 80 }}>
+
+                    <Box
+                         component="a"
+                        href="mailto: curatedcrates@gmail.com"
+                        sx={{
+                            color: 'white',
+                            textDecoration: 'none',
+                            transition: 'transform 0.2s ease, color 0.2s ease',
+                            '&:hover': {
+                                transform: 'scale(1.2)',
+                                color: '#4267B2' // Facebook blue color
+                            }
+                        }}
+                    >
+                        <MdOutlineEmail size={24} />
+                    </Box>
                     <Box
                         component="a"
                         href="https://facebook.com"

@@ -7,6 +7,7 @@ import SignIn from '../pages/SignIn.jsx';
 import Footer from './Footer';
 import NavBar from './Navbar';
 import Auth from '../utils/auth.js';
+import Dashboard from '../pages/Dash.jsx';
 
 function MainLayout() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -34,6 +35,7 @@ function MainLayout() {
                 <Route path="/how-it-works" element={<HowItWorks />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/signin" element={<SignIn />} />
+                < Route path="/dash" element={<Dashboard />} />
             </Routes>
             <Footer />
         </Router>
