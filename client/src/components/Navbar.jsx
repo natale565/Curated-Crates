@@ -37,6 +37,7 @@
 // export default NavBar;
 import React from 'react';
 import { AppBar, Toolbar, Typography, Stack, Button } from '@mui/material';
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
@@ -115,6 +116,24 @@ function NavBar({ isAuthenticated, onLogout }) {
                                 }}
                             >
                                 Sign Out
+                            </Button>
+                            
+                             <Button
+                                component={Link}
+                                to='Cart/index'
+                                color='inherit'
+                                sx={{
+                                    transition: 'all 0.3s ease',
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    '&:hover': {
+                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glow 1.5s infinite alternate',
+                                    },
+                                }}
+                                
+                                >
+                                <FaShoppingCart size={20}/>
                             </Button>
                         </>
                     ) : (
