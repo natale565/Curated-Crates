@@ -68,7 +68,7 @@ function NavBar({ isAuthenticated, onLogout }) {
 
                     <Button
                         component={Link}
-                        to="/how-it-works"
+                        to="/howitworks"
                         color='inherit'
                         sx={{
                             transition: 'all 0.3s ease',
@@ -116,24 +116,6 @@ function NavBar({ isAuthenticated, onLogout }) {
                                 }}
                             >
                                 Sign Out
-                            </Button>
-                            
-                             <Button
-                                component={Link}
-                                to='Cart/index'
-                                color='inherit'
-                                sx={{
-                                    transition: 'all 0.3s ease',
-                                    position: 'relative',
-                                    overflow: 'hidden',
-                                    '&:hover': {
-                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
-                                        animation: 'glow 1.5s infinite alternate',
-                                    },
-                                }}
-                                
-                                >
-                                <FaShoppingCart size={20}/>
                             </Button>
                         </>
                     ) : (

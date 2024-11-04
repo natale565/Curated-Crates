@@ -4,8 +4,8 @@ import HomePage from '../pages/HomePage.jsx';
 import HowItWorks from '../pages/HowItWorksPage.jsx';
 import SignUp from '../pages/SignUp.jsx';
 import SignIn from '../pages/SignIn.jsx';
-import Footer from './Footer';
-import NavBar from './Navbar';
+import Footer from './Footer.jsx';
+import NavBar from './Navbar.jsx';
 import Auth from '../utils/auth.js';
 import Dashboard from '../pages/Dash.jsx';
 

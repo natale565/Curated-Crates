@@ -1,18 +1,53 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
-import './index.css'
-import App from './App.jsx'
+import  ReactDOM from 'react-dom/client'
+import './index.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App.jsx';
+import HomePage from './pages/HomePage.jsx';
+import SignIn from './pages/SignIn.jsx';
+import SignUp from './pages/SignUp.jsx';
+import NoMatch from './pages/NoMatch.jsx';
+import Detail from './pages/Detail.jsx';
+import Success from './pages/Success.jsx';
+import Dash from './pages/Dash.jsx';
+import HowItWorks from './pages/HowItWorksPage.jsx';
+import Cart from './components/Cart/index.jsx';
 
-const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql',
-  cache: new InMemoryCache(),
-});
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <NoMatch />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />
+      }, {
+        path: 'signin',
+        element: <SignIn />
+      }, {
+        path: 'signup',
+        element: <SignUp />
+      }, {
+        path: 'success',
+        element: <Success />
+      }, {
+        path: 'dash',
+        element: <Dash />
+      }, {
+        path: 'howitworks',
+        element: <HowItWorks />
+      }, {
+        path: 'cart',
+        element:<Cart />
+      },
+      {
+        path: '/products/:id',
+        element: <Detail />
+      }
+    ]
+  }
+]);
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <ApolloProvider client = {client}>
-    <App />
-    </ApolloProvider>
-  </StrictMode>,
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <RouterProvider router={router} />
 )

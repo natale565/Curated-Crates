@@ -114,3 +114,11 @@ mutation deleteSubscriptionBox($id: ID!) {
     deleteSubscriptionBox(id: $id)
 }
 `;
+
+export const CHECKOUT = gql`
+mutation checkout($SubscriptionBox: [SubscriptionBoxInput]) {
+    checkout(SubscriptionBox: $SubscriptionBox) {
+        sessionId
+    } 
+}
+`;
