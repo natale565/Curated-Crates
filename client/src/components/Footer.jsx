@@ -9,7 +9,7 @@ function Footer() {
                 position: 'fixed', 
                 bottom: 0, 
                 width: '100%', 
-                backgroundColor: '#525252', 
+                backgroundColor: '#333', 
                 height: '8vh', 
                 color: 'white',
             }}
