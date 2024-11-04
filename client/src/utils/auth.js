@@ -1,4 +1,4 @@
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 class AuthService {
     getProfile() {
@@ -6,7 +6,7 @@ class AuthService {
         if (!token) return null;
         
         try {
-            return jwt_decode(token);
+            return jwtDecode(token);
         } catch (error) {
             console.error("Failed to decode token:", error);
             return null;
@@ -22,7 +22,7 @@ class AuthService {
         if (!token) return true;
         
         try {
-            const decoded = jwt_decode(token);
+            const decoded = jwtDecode(token);
             return decoded.exp < Date.now() / 1000;
         } catch (error) {
             console.error("Failed to decode token:", error);
