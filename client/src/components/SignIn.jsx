@@ -23,19 +23,22 @@ function SignIn(props) {
     try {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
-      }); 
+      });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
-
-      if(formState.rememberMe) {
+  
+      if (formState.rememberMe) {
         localStorage.setItem('email', formState.email);
       } else {
         localStorage.removeItem('email');
       }
     } catch (e) {
       console.log(e);
+      // Display error to the user
+      alert('Login failed. Please check your credentials.');
     }
   };
+  
     const handleChange = (event) => {
       const { name, value, type, checked } = event.target;
       setFormState({

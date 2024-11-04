@@ -17,14 +17,16 @@ const subscriptionBoxes = [
         description: 'A box of premium coffee beans from around the world.',
         price: 39.99,
         shippingFrequency: 'monthly',
-        items: ['Columbian Coffee-Huila', 'Ethopian Coffee-Yirgacheffe Region', 'Kenyan-Arabica ']
+        items: ['Columbian Coffee-Huila', 'Ethopian Coffee-Yirgacheffe Region', 'Kenyan-Arabica '],
+        images: 'coffee-subscription.jpeg'
     },
     {
         name: 'Gourmet Snack Box',
         description: 'A variety of gourmet snacks for your enjoyment.',
         price: 29.99,
         shippingFrequency: 'monthly',
-        items: ['Artisan Potato Chips, Organic Dried Fruits, 80% Cocoa Premium Dark Chocolate']
+        items: ['Artisan Potato Chips, Organic Dried Fruits, 80% Cocoa Premium Dark Chocolate'],
+        images: 'snack-box.jpeg'
     }
 ];
 
