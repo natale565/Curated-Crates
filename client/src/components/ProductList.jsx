@@ -5,6 +5,11 @@ import { useQuery } from '@apollo/client';
 import { GET_SUBSCRIPTION_BOXES } from '../utils/queries';
 import { UPDATE_PRODUCTS } from '../utils/actions';
 import { idbPromise } from '../utils/helpers';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
 
 function ProductList() {
     const [state, dispatch] = useStoreContext();
@@ -15,7 +20,7 @@ function ProductList() {
         if (data) {
             dispatch({
                 type: UPDATE_PRODUCTS,
-                products: data.getSubscriptionBoxes // Make sure to reference this correctly
+                products: data.getSubscriptionBoxes
             });
             data.getSubscriptionBoxes.forEach((product) => {
                 idbPromise('products', 'put', product);
@@ -31,10 +36,10 @@ function ProductList() {
     }, [data, loading, dispatch]);
 
     return (
-        <div>
+        <div style={{ maxWidth: '1200px', margin: 'auto', textAlign: 'center' }}>
             <h2>Our Subscription Boxes</h2>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-                {products.length > 0 ? ( // Check if products has items
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
+                {products.length > 0 ? (
                     products.map((product) => (
                         <ProductItem
                             key={product._id}

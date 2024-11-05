@@ -2,12 +2,16 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Stack, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import './style.css'
+import './style.css';
 
 // eslint-disable-next-line react/prop-types
 function NavBar({ isAuthenticated, onLogout }) {
     return (
-        <AppBar position='static' className='Nav'>
+        <AppBar position='static' className='Nav' sx={{
+            backgroundColor: '#333',
+            color: 'white',
+            boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+        }}>
             <Toolbar>
                 <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
                     Curated Crates

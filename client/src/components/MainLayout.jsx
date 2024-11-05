@@ -9,6 +9,7 @@ import NavBar from './Navbar.jsx';
 import Auth from '../utils/auth.js';
 import Dashboard from '../pages/Dash.jsx';
 
+
 function MainLayout() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
