@@ -13,21 +13,53 @@ const users = [
 
 const subscriptionBoxes = [
     {
-        name: 'Monthly Coffee Box',
-        description: 'A box of premium coffee beans from around the world.',
+        name: "Monthly Coffee Box",
+        description: "A box of premium coffee beans from around the world.",
         price: 39.99,
         shippingFrequency: 'monthly',
-        items: ['Columbian Coffee-Huila', 'Ethopian Coffee-Yirgacheffe Region', 'Kenyan-Arabica '],
-        images: 'coffee-subscription.jpeg'
+        items: ["Columbian Coffee-Huila', 'Ethopian Coffee-Yirgacheffe Region', 'Kenyan-Arabica "],
+        images: 'coffee-box.jpg'
     },
     {
-        name: 'Gourmet Snack Box',
-        description: 'A variety of gourmet snacks for your enjoyment.',
+        name: "Gourmet Snack Box",
+        description: "A variety of gourmet snacks for your enjoyment.",
         price: 29.99,
         shippingFrequency: 'monthly',
-        items: ['Artisan Potato Chips, Organic Dried Fruits, 80% Cocoa Premium Dark Chocolate'],
-        images: 'snack-box.jpeg'
-    }
+        items: ["Artisan Potato Chips, Organic Dried Fruits, 80% Cocoa Premium Dark Chocolate"],
+        images: 'snack-box2.jpg'
+    },
+    {
+        name: "Artisan Wine Box",
+        description: "Three bottles of artisan wine from around the world.",
+        price: 79.99,
+        shippingFrequency: 'monthly',
+        items: ["2018 Chardonnay, 2017 Cabernet Sauvignon, 2019 Pinot Noir"],
+        images: 'wine-box.jpg'
+    },
+    {
+        name: "Women's Beauty Box",
+        description: "Demure, elegant, and sophisticated beauty products.",
+        price: 49.99,
+        shippingFrequency: 'monthly',
+        items: [ "Fragrance, Skincare, Makeup"],
+        images: 'womens-box.jpg'
+    },
+    {
+        name: "Mens Grooming Box",
+        description: "Items to keep you looking sharp and feeling great.",
+        price: 49.99,
+        shippingFrequency: 'monthly',
+        items: [ "Shaving Cream, Aftershave, Beard Oil"],
+        images: 'mens-box.jpg'
+    },
+    {
+        name: "Dog Lovers Box",
+        description: "Don't forget about your furry friend!",
+        price: 24.99,
+        shippingFrequency: 'monthly',
+        items: [ "Stuffed Toys, Treats, Leash"],
+        images: 'dog-box.jpg'
+    },
 ];
 
 const orders = [
