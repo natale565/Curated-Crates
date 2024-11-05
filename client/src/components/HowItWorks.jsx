@@ -5,7 +5,9 @@ function Steps() {
     const stepBoxStyles = {
         display: 'flex',
         alignItems: 'center',
-        border: '1px solid grey',
+        border: '2px solid #ddd',
+        borderRadius: '8px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
         p: 2,
         minWidth: '300px',
     };
