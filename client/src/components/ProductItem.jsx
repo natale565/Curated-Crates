@@ -3,22 +3,15 @@ import { useStoreContext } from '../utils/GlobalState';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../utils/actions";
 import { idbPromise } from '../utils/helpers';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 function ProductItem(item) {
     const [state, dispatch] = useStoreContext();
-    const {
-        images,
-        name,
-        _id,
-        description,
-        items = [],
-        price
-    } = item;
-
-    const { cart } = state
+    const { images, name, _id, description, items = [], price } = item;
+    const { cart } = state;
 
     const addToCart = () => {
-        const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+        const itemInCart = cart.find((cartItem) => cartItem._id === _id);
         if(itemInCart) {
             dispatch({
                 type: UPDATE_CART_QUANTITY,
@@ -36,34 +29,74 @@ function ProductItem(item) {
             });
             idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
         }
-    }
+    };
+
     return (
-        <>
-            
-            <Box component="div" sx={{ display: 'flex', gap: 2 }}>
-                <Box component="section" sx={{ p: 2, border: '1px solid grey', flex: 1 }}>
-                    <Link to={`/products/${_id}`}>
-                      <img
-                        alt={name}
-                        src={`/images/${images}`}
-                        />
-                        <p>{name}</p>
-                    </Link>
-                        <div>
-                            <div>
-                                <span>{description}</span>
-                            </div>
-                            <div>
-                                <span>{items.join(', ')}</span>
-                            </div>
-                            <div>
-                                <span>Price: ${price}</span>
-                            </div>
-                            <button onClick={addToCart}>Add to cart</button>
-                        </div>
-                </Box>
+        <Box
+            sx={{
+                width: '220px',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                overflow: 'hidden',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                transition: 'transform 0.2s',
+                '&:hover': {
+                    transform: 'scale(1.05)',
+                },
+                p: 2,
+                textAlign: 'center',
+                backgroundColor: '#333',
+                color: 'white',
+            }}
+        >
+            <Link 
+                to={`/products/${_id}`} 
+                style={{ textDecoration: 'none' }}
+                sx={{
+                    color: '#00BFFF',  // Light blue color for links
+                    transition: 'color 0.2s',
+                    '&:hover': {
+                        color: '#1E90FF',  // Darker blue on hover
+                    },
+                }}
+            >
+                <Box component="img" 
+                     src={`/images/${images}`} 
+                     alt={name} 
+                     sx={{ width: '100%', height: 'auto', mb: 1 }} 
+                />
+                <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1rem', mb: 0.5 }}>
+                    {name}
+                </Typography>
+            </Link>
+            <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
+                {description}
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
+                {items.join(', ')}
+            </Typography>
+            <Typography variant="body1" sx={{ fontWeight: 'bold', mb: 1, color: 'white' }}>
+                ${price}
+            </Typography>
+            <Box
+                component="button"
+                onClick={addToCart}
+                sx={{
+                    backgroundColor: '#555',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    padding: '8px 12px',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.2s',
+                    '&:hover': {
+                        backgroundColor: '#777',
+                    },
+                }}
+            >
+                Add to cart
             </Box>
-        </>
+        </Box>
     );
 }
 
