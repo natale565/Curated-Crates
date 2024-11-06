@@ -75,7 +75,7 @@ function Steps() {
                     </Box>
                     <Box sx={contentBoxStyles}>
                         <img 
-                            src="/images/How-It-Works-Step-2-Credit-john-schnobric.jpg" 
+                            src="/images/step-2.png" 
                             alt="Step 2" 
                             style={{ 
                                 maxWidth: '100%', 
