@@ -1,17 +1,30 @@
-
 import React from 'react';
-import { AppBar, Toolbar, Typography, Stack, Button } from '@mui/material';
+import { AppBar, Toolbar, Typography, Stack, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
-import './style.css'
+import './style.css';
 
 // eslint-disable-next-line react/prop-types
 function NavBar({ isAuthenticated, onLogout }) {
     return (
-        <AppBar position='static' className='Nav'>
+        <AppBar position='static' sx={{
+            backgroundColor: '#333',
+            color: 'white',
+            boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+        }}>
             <Toolbar>
-                <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-                    Curated Crates
-                </Typography>
+                {/* Container for logo and title */}
+                <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+                    <Box 
+                        component="img" 
+                        src="./public/images/crates.png"
+                        alt="Curated Crates Logo" 
+                        sx={{ width: 40, height: 40, mr: 1 }}
+                    />
+                    <Typography variant='h6' component='div'>
+                        Curated Crates
+                    </Typography>
+                </Box>
+
                 <Stack direction='row' spacing={2}>
                     <Button
                         component={Link}
@@ -46,7 +59,7 @@ function NavBar({ isAuthenticated, onLogout }) {
                     >
                         How It Works
                     </Button>
-                    
+
                     {isAuthenticated ? (
                         <>
                             <Button

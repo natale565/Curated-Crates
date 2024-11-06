@@ -40,8 +40,10 @@ const CartItem = ({ item }) => {
                 alt=""
                 />
             </div>
-            <div>
-                <div>{item.name}, ${item.price}</div>
+            <div className='cart-item-details'>
+                    <div>Box: {item.name}</div>
+                    <div>Price: ${item.price}</div>
+                    <div>Shipping Frequency: {item.shippingFrequency}</div>
                 <div>
                     <span>Qty:</span>
                     <input
@@ -70,6 +72,7 @@ CartItem.propTypes = {
         description: PropTypes.string.isRequired,
         image: PropTypes.string,
         price: PropTypes.number.isRequired,
+        shippingFrequency: PropTypes.string.isRequired,
         purchaseQuantity: PropTypes.number.isRequired,
         shippingFrequency: PropTypes.string.isRequired,
     }).isRequired,

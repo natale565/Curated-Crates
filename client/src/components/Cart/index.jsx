@@ -44,6 +44,27 @@ const Cart = () => {
     }
 
     function submitCheckout() {
+<<<<<<< HEAD
+=======
+        if (!state.cart.length) {
+            alert("Your cart is empty.");
+            return;
+        }
+
+        const checkoutItems = state.cart.map(item => ({
+            _id: item._id,
+            name: item.name || '',
+            description: item.description || '',
+            price: item.price || 0.0,
+            shippingFrequency: item.shippingFrequency || '',
+            items: item.items || [],
+            image: item.image
+        }));
+
+        console.log("Checkout variables:", { SubscriptionBox: checkoutItems });
+
+        // Use the mutation here
+>>>>>>> main
         checkout({
             variables: { 
               subscriptionBoxes: [...state.cart],
