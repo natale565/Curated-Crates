@@ -9,12 +9,16 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server/seeders && npm run seed",
     "build": "cd client && npm run build",
-    "render-build":"npm install && npm run build"
+    "render-build": "npm install && npm run build",
+    "test": "vitest"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^9.0.1"
+    "@testing-library/react": "^16.0.1",
+    "concurrently": "^9.0.1",
+    "happy-dom": "^15.10.1",
+    "vitest": "^2.1.4"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
