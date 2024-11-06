@@ -17,7 +17,11 @@ const userSchema = new Schema({
         type: String,
         required: true,
         minlength: 8,
-    }
+    },
+    order: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Order',
+    }]
 });
 
 userSchema.pre('save', async function (next) {

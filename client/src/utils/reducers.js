@@ -13,33 +13,36 @@ export const reducer = (state, action) => {
         case UPDATE_PRODUCTS:
             return {
                 ...state,
-                products: [...action.products],
+                subscriptionBoxes: [...action.subscriptionBoxes],
             };
         case ADD_TO_CART:
-            return {
+            if (!action.subscriptionBox|| !action.subscriptionBox._id || !action.subscriptionBox.name || action.subscriptionBox.price == null) {
+                return state; // Return the current state without updating
+            }
+           return {
                 ...state,
                 cartOpen: true,
-                cart: [...state.cart, action.product],
+                cart: [...state.cart, {...action.subscriptionBox }],
             };
         case ADD_MULTIPLE_TO_CART:
             return {
                 ...state,
-                cart: [...state.cart, ...action.products]
+                cart: [...state.cart, ...action.subscriptionBoxes]
             };
         case UPDATE_CART_QUANTITY:
             return {
                 ...state,
                 cartOpen: true,
-                cart: state.cart.map(product => {
-                    if (action._id === product.id) {
-                        product.purchaseQuantity = action.purchaseQuantity
+                cart: state.cart.map(subscriptionBox => {
+                    if (action._id === subscriptionBox.id) {
+                        subscriptionBox.purchaseQuantity = action.purchaseQuantity
                     }
-                    return product
+                    return subscriptionBox
                 })
             };
         case REMOVE_FROM_CART:
-            let newState = state.cart.filter(product => {
-                return product._id !== action._id;
+            let newState = state.cart.filter(subscriptionBox => {
+                return subscriptionBox._id !== action._id;
             });
 
             return {

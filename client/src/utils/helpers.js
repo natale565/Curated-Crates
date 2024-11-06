@@ -5,20 +5,23 @@ export function idbPromise(storeName, method, object) {
 
         request.onupgradeneeded = function (e) {
             db = e.target.result;
-
+            
             if (!db.objectStoreNames.contains('SubscriptionBox')) {
+                console.log("Creating SubscriptionBox store");
                 db.createObjectStore('SubscriptionBox', { keyPath: '_id' });
             }
-
+        
             if (!db.objectStoreNames.contains('cart')) {
+                console.log("Creating cart store");
                 db.createObjectStore('cart', { keyPath: '_id' });
             }
-
-            if (!db.objectStoreNames.contains('products')) {
-                db.createObjectStore('products', { keyPath: '_id' });
+        
+            if (!db.objectStoreNames.contains('boxes')) {
+                console.log("Creating boxes store");
+                db.createObjectStore('boxes', { keyPath: '_id' });
             }
         };
-
+        
         request.onerror = function (e) {
             console.error('IndexedDB error:', e);
             reject('There was an error opening the database');
@@ -26,6 +29,11 @@ export function idbPromise(storeName, method, object) {
 
         request.onsuccess = function (e) {
             db = e.target.result;
+            if (!db.objectStoreNames.contains(storeName)) {
+                console.error(`Store ${storeName} not found`);
+                reject('Store not found');
+                return;
+            }
             tx = db.transaction(storeName, 'readwrite');
             store = tx.objectStore(storeName);
 
@@ -35,14 +43,15 @@ export function idbPromise(storeName, method, object) {
 
             switch (method) {
                 case 'put':
+                    if (!object._id) {
+                        console.error("Missing `_id` in object", object);
+                        reject("Missing `_id` in object");
+                    } else {
                     const putRequest = store.put(object);
                     putRequest.onsuccess = function () {
                         resolve(object);
                     };
-                    putRequest.onerror = function (e) {
-                        console.error('Error putting data:', e.target.error);
-                        reject('Error putting data: ' + e.target.error);
-                    };
+                    }
                     break;
                 case 'get':
                     const getRequest = store.getAll();

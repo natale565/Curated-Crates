@@ -9,10 +9,11 @@ const resolvers = {
             if (!context.user) throw new AuthenticationError('Authentication required');
             return await User.findById(context.user.id);
         },
-        getSubscriptionBox: async (parent, { _id }) => await SubscriptionBox.findById(_id),
-        getSubscriptionBoxes: async (parent) => await SubscriptionBox.find(),
+        getSubscriptionBox: async (parent, { _id }) => await SubscriptionBox.findById(_id).select('_id name description price shippingFrequency items image'),
+        getSubscriptionBoxes: async (parent) => await SubscriptionBox.find().select('_id name description price shippingFrequency items image'),
         getUserOrders: async (parent, { userId }) => await Order.find({ user: userId }).populate('box'),
         getBoxReviews: async (parent, { boxId }) => await Review.find({ box: boxId }).populate('user'),
+
     },
     Mutation: {
         register: async (parent, { name, email, password }) => {
@@ -66,35 +67,38 @@ const resolvers = {
             return review;
         },
         checkout: async (parent, args, context) => {
-            const url = new URL(context.headers.referer).origin;
-            const order = await Order.create({ box: args.SubscriptionBox.map(({ _id }) => _id) });
-            const line_items = [];
+            const url = context.headers?.referer ? new URL(context.headers.referer).origin : 'http://localhost:3001';        
+            const order = await Order.create({ 
+            user: context.user._id,
+            subscritionBoxes: args.subscriptionBoxes.map(({ _id }) => _id),
+        });
+        const line_items = [];
 
-            for (const product of args.SubscriptionBox) {
-                line_items.push({
-                    price_data: {
-                        currency: 'usd',
-                        product_data: {
-                            name: product.name,
-                            description: product.description,
-                            images: [`${url}/images/${product.image}`]
-                        },
-                        unit_amount: product.price * 100,
+        for (const subscriptionBox of args.subscriptionBoxes) {
+            line_items.push({
+                price_data: {
+                    currency: 'usd',
+                    product_data: {
+                        name: subscriptionBox.name,
+                        description: subscriptionBox.description,
+                        images: [`${url}/images/${subscriptionBox.image}`]
                     },
-                    quantity: 1,
-                });
-            }
-
-            const session = await stripe.checkout.sessions.create({
-                payment_method_types: ['card'],
-                line_items,
-                mode: 'payment',
-                success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-                cancel_url: `${url}/`,
+                    unit_amount: subscriptionBox.price * 100,
+                },
+                quantity: subscriptionBox.purchaseQuantity,
             });
+        }
 
-            return { session: session.id };
-        },
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items,
+            mode: 'payment',
+            success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${url}/`,
+        });
+
+        return { session: session.id };
+    },
     }
 };
 

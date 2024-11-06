@@ -9,22 +9,22 @@ import { idbPromise } from '../utils/helpers';
 function ProductList() {
     const [state, dispatch] = useStoreContext();
     const { loading, data } = useQuery(GET_SUBSCRIPTION_BOXES);
-    const { products } = state;
+    const { subscriptionBoxes } = state;
 
     useEffect(() => {
         if (data) {
             dispatch({
                 type: UPDATE_PRODUCTS,
-                products: data.getSubscriptionBoxes // Make sure to reference this correctly
+                subscriptionBoxes: data.getSubscriptionBoxes // Make sure to reference this correctly
             });
-            data.getSubscriptionBoxes.forEach((product) => {
-                idbPromise('products', 'put', product);
+            data.getSubscriptionBoxes.forEach((subscriptionBox) => {
+                idbPromise('SubscriptionBox', 'put', subscriptionBox);
             });
         } else if (!loading) {
-            idbPromise('products', 'get').then((products) => {
+            idbPromise('SubscriptionBox', 'get').then((subscriptionBoxes) => {
                 dispatch({
                     type: UPDATE_PRODUCTS,
-                    products: products
+                    subscriptionBoxes: subscriptionBoxes
                 });
             });
         }
@@ -34,20 +34,21 @@ function ProductList() {
         <div>
             <h2>Our Subscription Boxes</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-                {products.length > 0 ? ( // Check if products has items
-                    products.map((product) => (
+                {state.subscriptionBoxes.length > 0 ? (
+                    subscriptionBoxes.map((subscriptionBox) => (
                         <ProductItem
-                            key={product._id}
-                            _id={product._id}
-                            name={product.name}
-                            images={product.images}
-                            description={product.description}
-                            items={product.items}
-                            price={product.price}
+                            key={subscriptionBox._id}
+                            _id={subscriptionBox._id}
+                            name={subscriptionBox.name}
+                            image={subscriptionBox.image}
+                            description={subscriptionBox.description}
+                            items={subscriptionBox.items}
+                            price={subscriptionBox.price}
+                            shippingFrequency={subscriptionBox.shippingFrequency}
                         />
                     ))
                 ) : (
-                    <p>No products available</p>
+                    <p>No boxes available</p>
                 )}
             </div>
         </div>

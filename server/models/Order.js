@@ -6,12 +6,14 @@ const orderSchema = new Schema({
         ref: 'User',
         required: true
     },
-    box: {
+    subscriptionBoxes: [
+        { 
         type: Schema.Types.ObjectId,
         ref: 'SubscriptionBox',
         required: true,
-    },
-    status: {
+    }
+    ],
+    orderStatus: {
         type: String,
         enum: ['active', 'paused', 'cancelled'],
         default: 'active'

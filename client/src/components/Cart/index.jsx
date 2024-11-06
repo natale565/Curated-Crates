@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useMutation } from '@apollo/client';
 import { CHECKOUT } from '../../utils/mutations';
@@ -9,19 +9,28 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
 
-const stripePromise = loadStripe('your-stripe-public-key');
+const stripePromise = loadStripe('pk_test_51QG7vwCeKQc4PDCDTjHSQZJ1MfZobJi8ZPJ5RUCuM3bXBMYWer2FZp70UqLdleKo7mmzX0fC7hwoJdI0H8Plrn6300Fyi9QJlH');
 
 const Cart = () => {
     const [state, dispatch] = useStoreContext();
-    const [checkout, { data, loading, error }] = useMutation(CHECKOUT);
+    const [checkout, { data }] = useMutation(CHECKOUT);
+
+    useEffect(() => {
+        if (data) {
+            stripePromise.then((res) => {
+                res.redirectToCheckout({ sessionId: data.checkout.session });
+            });
+        }
+    }, [data]);
 
     useEffect(() => {
         async function getCart() {
             const cart = await idbPromise('cart', 'get');
-            dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+            dispatch({ type: ADD_MULTIPLE_TO_CART, subscriptionBoxes: [...cart] });
         }
 
         if (!state.cart.length) {
+
             getCart();
         }
     }, [state.cart.length, dispatch]);
@@ -35,44 +44,12 @@ const Cart = () => {
     }
 
     function submitCheckout() {
-        if (!state.cart.length) {
-            alert("Your cart is empty.");
-            return;
-        }
-
-        const checkoutItems = state.cart.map(item => ({
-            _id: item._id,
-            name: item.name || '',
-            description: item.description || '',
-            price: item.price || 0.0,
-            shippingFrequency: item.shippingFrequency,
-            items: item.items || [],
-            image: item.image
-        }));
-
-        console.log("Checkout variables:", { SubscriptionBox: checkoutItems });
-
-        // Use the mutation here
         checkout({
-            variables: { SubscriptionBox: checkoutItems }
-        })
-            .then(response => {
-                // Handle successful response, e.g., redirect to checkout page
-                const sessionId = response.data.checkout.sessionId;
-                stripePromise.then(stripe => {
-                    stripe.redirectToCheckout({ sessionId });
-                });
-            })
-            .catch(error => {
-                console.error("Checkout error:", error);
-            });
-    }
-
-    if (loading) return <p>Loading...</p>;
-    if (error) {
-        console.error("Checkout error:", error);
-        return <p>Error: {error.message}</p>;
-    }
+            variables: { 
+              subscriptionBoxes: [...state.cart],
+        },
+    });
+  } 
 
     if (!state.cartOpen) {
         return (
@@ -95,9 +72,9 @@ const Cart = () => {
             {isLoggedIn ? ( 
                 state.cart.length ? (
                     <>
-                        {state.cart.map((item) => (
-                            <CartItem key={item._id} item={item} />
-                        ))}
+                      {state.cart.map((item) => (
+    <CartItem key={item._id} item={item} />
+))}
                         <div className="flex-row space-between">
                             <strong>Total: ${calculateTotal()}</strong>
                             <button onClick={submitCheckout}>Checkout</button>

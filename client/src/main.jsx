@@ -6,7 +6,6 @@ import HomePage from './pages/HomePage.jsx';
 import SignIn from './pages/SignIn.jsx';
 import SignUp from './pages/SignUp.jsx';
 import NoMatch from './pages/NoMatch.jsx';
-import Detail from './pages/Detail.jsx';
 import Success from './pages/Success.jsx';
 import Dash from './pages/Dash.jsx';
 import HowItWorks from './pages/HowItWorksPage.jsx';
@@ -40,10 +39,6 @@ const router = createBrowserRouter([
         path: 'cart',
         element:<Cart />
       },
-      {
-        path: '/products/:id',
-        element: <Detail />
-      }
     ]
   }
 ]);
