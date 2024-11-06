@@ -45,7 +45,7 @@ const Cart = () => {
             name: item.name || '',
             description: item.description || '',
             price: item.price || 0.0,
-            shippingFrequency: item.shippingFrequency,
+            shippingFrequency: item.shippingFrequency || '',
             items: item.items || [],
             image: item.image
         }));

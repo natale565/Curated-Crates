@@ -58,6 +58,19 @@
     padding: 0;
     margin: 0 .5rem 1rem 0;
   }
+
+  .cart-item-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+  
+.cart-item-details div {
+    margin-bottom: 8px;
+}
   
   @media screen and (max-width: 768px) {
     .cart {

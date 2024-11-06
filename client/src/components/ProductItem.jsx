@@ -12,7 +12,7 @@ function ProductItem(item) {
     const { cart } = state;
 
     // State for select dropdown
-    const [frequency, setFrequency] = useState('');
+    const [shippingFrequency, setFrequency] = useState('');
     const handleFrequencyChange = (event) => {
         setFrequency(event.target.value);
     };
@@ -23,18 +23,20 @@ function ProductItem(item) {
             dispatch({
                 type: UPDATE_CART_QUANTITY,
                 _id: _id,
-                purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+                purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+                shippingFrequency: shippingFrequency
             });
             idbPromise('cart', 'put', {
                 ...itemInCart,
-                purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+                purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+                shippingFrequency: shippingFrequency
             });
         } else {
             dispatch({
                 type: ADD_TO_CART,
-                product: { ...item, purchaseQuantity: 1 }
+                product: { ...item, shippingFrequency: shippingFrequency, purchaseQuantity: 1 }
             });
-            idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+            idbPromise('cart', 'put', { ...item, shippingFrequency: shippingFrequency, purchaseQuantity: 1 });
         }
     };
 
@@ -86,7 +88,7 @@ function ProductItem(item) {
                 ${price}
             </Typography>
             <select
-                value= {frequency}
+                value= {shippingFrequency}
                 onChange= {handleFrequencyChange}
                 style={{
                     marginBottom: '10px',
@@ -95,16 +97,16 @@ function ProductItem(item) {
                     color: 'black',
                 }}
             >
-                <option value="" disabled>Select Frequency</option>
+                <option value="" disabled>Select Shipping Frequency</option>
                 <option value="monthly">Monthly</option>
                 <option value="quarterly">Quarterly</option>
             </select>
             <Box
                 component="button"
                 onClick={addToCart}
-                disabled={frequency === ''}
+                disabled={shippingFrequency === ''}
                 sx={{
-                    backgroundColor: frequency === '' ? '#e21d1d' : '#3840dc',
+                    backgroundColor: shippingFrequency === '' ? '#e21d1d' : '#3840dc',
                     color: 'white',
                     border: 'none',
                     borderRadius: '4px',
