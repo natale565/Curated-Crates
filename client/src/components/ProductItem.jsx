@@ -94,7 +94,7 @@ function ProductItem(item) {
                     marginBottom: '10px',
                     padding: '5px',
                     fontSize: '1em',
-                    color: 'black',
+                    color: 'white',
                 }}
             >
                 <option value="" disabled>Select Shipping Frequency</option>
@@ -106,7 +106,7 @@ function ProductItem(item) {
                 onClick={addToCart}
                 disabled={shippingFrequency === ''}
                 sx={{
-                    backgroundColor: shippingFrequency === '' ? '#e21d1d' : '#3840dc',
+                    backgroundColor: '#3840dc',
                     color: 'white',
                     border: 'none',
                     borderRadius: '4px',
@@ -114,7 +114,7 @@ function ProductItem(item) {
                     cursor: 'pointer',
                     transition: 'background-color 0.2s',
                     '&:hover': {
-                        backgroundColor: '#777',
+                        backgroundColor: ' #1E90FF',
                     },
                 }}
             >
