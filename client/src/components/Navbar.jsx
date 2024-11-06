@@ -16,7 +16,7 @@ function NavBar({ isAuthenticated, onLogout }) {
                 <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
                     <Box 
                         component="img" 
-                        src="./public/images/crates.png"
+                        src="/images/crates.png"
                         alt="Curated Crates Logo" 
                         sx={{ width: 40, height: 40, mr: 1 }}
                     />
