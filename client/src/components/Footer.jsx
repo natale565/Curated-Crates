@@ -15,13 +15,20 @@ function Footer() {
 
     // Shared styles for the toolbar and container
     const toolbarStyles = {
-        position: 'fixed',
-        bottom: 0,
-        width: '100%',
-        backgroundColor: '#333',
-        height: '8vh',
+        backgroundColor: '#333', // Match navbar color
         color: 'white',
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)', // Match navbar shadow
+        display: 'flex',
+        justifyContent: 'center',
+        padding: ' 0',
+        // position: 'fixed',
+        bottom: '0',
+        marginTop: '30px',
+        width: '100%',
+        left: '0',
+        position: 'relative',
     };
+
 
     return (
         <Toolbar sx={toolbarStyles}>

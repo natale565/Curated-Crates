@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Cart from './components/Cart';
 import { StoreProvider } from './utils/GlobalState';
 import Auth from './utils/auth';
+import { Box } from '@mui/material';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -45,13 +46,23 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <StoreProvider>
-        <Navbar 
-          isAuthenticated={isAuthenticated}
-          onLogout={handleLogout}
-        />
-        <Cart />
-        <Outlet />
-        <Footer />
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '100vh', 
+          }}
+        >
+          <Navbar 
+            isAuthenticated={isAuthenticated}
+            onLogout={handleLogout}
+          />
+          <Cart />
+          <Box sx={{ flexGrow: 1, paddingBottom: '8vh' }}>
+            <Outlet />
+          </Box>
+          <Footer />
+        </Box>
       </StoreProvider>
     </ApolloProvider>
   );
