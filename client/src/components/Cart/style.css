@@ -5,7 +5,7 @@
     min-width: 20%;
     max-width: 15%;
     max-height: 60%;
-    background-color: var(--light);
+    background-color: #333;
     overflow: auto;
     padding: .5rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
@@ -66,7 +66,7 @@
         max-width: 100%;
         max-height: auto;
         box-shadow: none;
-        background-color: inherit;
+        background-color: #333;
     }
 
   

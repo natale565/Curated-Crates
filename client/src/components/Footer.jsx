@@ -20,13 +20,13 @@ function Footer() {
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)', // Match navbar shadow
         display: 'flex',
         justifyContent: 'center',
-        padding: ' 0',
         // position: 'fixed',
         bottom: '0',
         marginTop: '30px',
         width: '100%',
         left: '0',
         position: 'relative',
+        boxSizing: 'border-box',
     };
 
 
