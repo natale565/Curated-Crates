@@ -4,11 +4,18 @@ import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../utils/actions";
 import { idbPromise } from '../utils/helpers';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 
 function ProductItem(item) {
     const [state, dispatch] = useStoreContext();
     const { images, name, _id, description, items = [], price } = item;
     const { cart } = state;
+
+    // State for select dropdown
+    const [frequency, setFrequency] = useState('');
+    const handleFrequencyChange = (event) => {
+        setFrequency(event.target.value);
+    };
 
     const addToCart = () => {
         const itemInCart = cart.find((cartItem) => cartItem._id === _id);
@@ -78,11 +85,26 @@ function ProductItem(item) {
             <Typography variant="body1" sx={{ fontWeight: 'bold', mb: 1, color: 'white' }}>
                 ${price}
             </Typography>
+            <select
+                value= {frequency}
+                onChange= {handleFrequencyChange}
+                style={{
+                    marginBottom: '10px',
+                    padding: '5px',
+                    fontSize: '1em',
+                    color: 'black',
+                }}
+            >
+                <option value="" disabled>Select Frequency</option>
+                <option value="monthly">Monthly</option>
+                <option value="quarterly">Quarterly</option>
+            </select>
             <Box
                 component="button"
                 onClick={addToCart}
+                disabled={frequency === ''}
                 sx={{
-                    backgroundColor: '#555',
+                    backgroundColor: frequency === '' ? '#e21d1d' : '#3840dc',
                     color: 'white',
                     border: 'none',
                     borderRadius: '4px',
