@@ -5,7 +5,7 @@ function Steps() {
     const stepBoxStyles = {
         display: 'flex',
         flexDirection: 'row', // Step number and image/text side by side
-        alignItems: 'flex-start', // Align all items to the top left
+        alignItems: 'flex-start', 
         border: '2px solid #ddd',
         borderRadius: '8px',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
@@ -13,12 +13,12 @@ function Steps() {
         minWidth: '300px',
         textAlign: 'left',
         gap: '10px',
-        alignSelf: 'flex-start', // Align the step box to the left
+        alignSelf: 'flex-start', 
     };
 
     const numberBoxStyles = {
         display: 'flex',
-        flexDirection: 'column', // Stack the number vertically
+        flexDirection: 'column', 
         alignItems: 'center',
         pr: 2,
         mr: 2,
@@ -52,9 +52,17 @@ function Steps() {
                         <h1 style={{ margin: 0 }}>1</h1>
                     </Box>
                     <Box sx={contentBoxStyles}>
-                        <img src="./public/images/How-It-Works-Step-1.jpg" alt="Step 1" style={{ width: '400px', height: '400px', objectFit: 'cover' }} />
+                        <img 
+                            src="/images/How-It-Works-Step-1.jpg" 
+                            alt="Step 1" 
+                            style={{ 
+                                maxWidth: '100%', // Ensures the image can scale down
+                                height: 'auto', // Maintain aspect ratio
+                                objectFit: 'cover' 
+                            }} 
+                        />
                         <Box sx={textBoxStyles}>
-                            Choose Your Box – Begin by exploring our many different  unique box options. Each is thoughtfully crafted to bring you joy, discovery, and quality with every delivery.
+                            Choose Your Box – Begin by exploring our many different unique box options. Each is thoughtfully crafted to bring you joy, discovery, and quality with every delivery.
                         </Box>
                     </Box>
                 </Box>
@@ -66,7 +74,15 @@ function Steps() {
                         <h1 style={{ margin: 0 }}>2</h1>
                     </Box>
                     <Box sx={contentBoxStyles}>
-                        <img src="./public/images/How-It-Works-Step-2-Credit-john-schnobric.jpg" alt="Step 2" style={{ width: '400px', height: '400px', objectFit: 'cover' }} />
+                        <img 
+                            src="/images/How-It-Works-Step-2-Credit-john-schnobric.jpg" 
+                            alt="Step 2" 
+                            style={{ 
+                                maxWidth: '100%', 
+                                height: 'auto', 
+                                objectFit: 'cover' 
+                            }} 
+                        />
                         <Box sx={textBoxStyles}>
                             Pick Your Tier – Select a tier that matches your desired experience. Higher tiers offer an even greater assortment of premium items, tailored to enhance each delivery.
                         </Box>
@@ -80,7 +96,15 @@ function Steps() {
                         <h1 style={{ margin: 0 }}>3</h1>
                     </Box>
                     <Box sx={contentBoxStyles}>
-                        <img src="./public/images/How-It-Works-Step-1.jpg" alt="Step 3" style={{ width: '400px', height: '400px', objectFit: 'cover' }} />
+                        <img 
+                            src="/images/How-It-Works-Step-3.jpg" 
+                            alt="Step 3" 
+                            style={{ 
+                                maxWidth: '100%', 
+                                height: 'auto', 
+                                objectFit: 'cover' 
+                            }} 
+                        />
                         <Box sx={textBoxStyles}>
                             Get Your Crate – Sit back, relax, and let the excitement build! Your curated crate will arrive right at your doorstep, packed with delightful surprises all tailored to bring you joy and discovery with every unboxing.
                         </Box>
