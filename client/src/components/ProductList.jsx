@@ -7,9 +7,6 @@ import { UPDATE_PRODUCTS } from '../utils/actions';
 import { idbPromise } from '../utils/helpers';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
 
 function ProductList() {
     const [state, dispatch] = useStoreContext();
@@ -20,11 +17,7 @@ function ProductList() {
         if (data) {
             dispatch({
                 type: UPDATE_PRODUCTS,
-<<<<<<< HEAD
-                subscriptionBoxes: data.getSubscriptionBoxes // Make sure to reference this correctly
-=======
-                products: data.getSubscriptionBoxes
->>>>>>> main
+                subscriptionBoxes: data.getSubscriptionBoxes
             });
             data.getSubscriptionBoxes.forEach((subscriptionBox) => {
                 idbPromise('SubscriptionBox', 'put', subscriptionBox);
@@ -41,16 +34,14 @@ function ProductList() {
 
     return (
         <div style={{ maxWidth: '1200px', margin: 'auto', textAlign: 'center' }}>
-            <h2>Our Subscription Boxes</h2>
-<<<<<<< HEAD
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-                {state.subscriptionBoxes.length > 0 ? (
+            <Typography variant="h2" component="h2" gutterBottom>
+                Our Subscription Boxes
+            </Typography>
+            <Box 
+                sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center' }}
+            >
+                {subscriptionBoxes && subscriptionBoxes.length > 0 ? (
                     subscriptionBoxes.map((subscriptionBox) => (
-=======
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
-                {products.length > 0 ? (
-                    products.map((product) => (
->>>>>>> main
                         <ProductItem
                             key={subscriptionBox._id}
                             _id={subscriptionBox._id}
@@ -63,9 +54,9 @@ function ProductList() {
                         />
                     ))
                 ) : (
-                    <p>No boxes available</p>
+                    !loading && <p>No boxes available</p>
                 )}
-            </div>
+            </Box>
         </div>
     );
 }
