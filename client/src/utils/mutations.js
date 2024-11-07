@@ -27,14 +27,16 @@ export const ADD_ORDER= gql`
     mutation addOrder($boxIds: [ID!]!) {
         addOrder(boxId: $boxIds) {
             _id
-            status
-            box {
+            orderStatus
+            startDate
+            subscriptionBoxes {
                 _id
-                title
+                name 
                 description
                 price
                 shippingFrequency
                 items
+                image
             }
         }
     }
@@ -44,7 +46,7 @@ export const UPDATE_ORDER_STATUS = gql`
     mutation updateOrderStatus($id: ID!, $status: String!) {
     updateOrderStatus(id: $id, status: $status) {
         _id
-        status    
+        orderStatus    
     }
 }
 `;
@@ -64,21 +66,21 @@ export const ADD_REVIEW = gql`
 
 export const ADD_SUBSCRIPTION_BOX = gql `
 mutation addSubscriptionBox(
-    $title: String!,
+    $name: String!,
     $description: String!,
     $price: Float!,
     $shippingFrequency: String!,
     $items: [String]
 ) {
     addSubscriptionBox(
-        title: $title,
+        name: $name,
         description: $description,
         price: $price,
         shippingFrequency: $shippingFrequency,
         items: $items
     ) {
         _id
-        title
+        name
         price
     }
 }
@@ -87,7 +89,7 @@ mutation addSubscriptionBox(
 export const UPDATE_SUBSCRIPTION_BOX = gql `
 mutation updateSubscriptionBox(
     $id: ID!,
-    $title: String,
+    $name: String,
     $description: String,
     $price: Float,
     $shippingFrequency: String,
@@ -95,14 +97,14 @@ mutation updateSubscriptionBox(
 ) {
     updateSubscriptionBox(
         id: $id,
-        title: $title,
+        name: $name,
         description: $description,
         price: $price,
         shippingFrequency: $shippingFrequency,
         items: $items
     ) {
         _id
-        title
+        name
         description
         price
     }
@@ -115,10 +117,11 @@ mutation deleteSubscriptionBox($id: ID!) {
 }
 `;
 
+
 export const CHECKOUT = gql`
-mutation checkout($SubscriptionBox: [SubscriptionBoxInput]) {
-    checkout(SubscriptionBox: $SubscriptionBox) {
-        sessionId
+mutation checkout($subscriptionBoxes: [SubscriptionBoxInput]) {
+    checkout(subscriptionBoxes: $subscriptionBoxes) {
+        session
     } 
 }
 `;

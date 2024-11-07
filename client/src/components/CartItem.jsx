@@ -69,10 +69,12 @@ CartItem.propTypes = {
     item: PropTypes.shape({
         _id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
         image: PropTypes.string,
         price: PropTypes.number.isRequired,
         shippingFrequency: PropTypes.string.isRequired,
         purchaseQuantity: PropTypes.number.isRequired,
+        shippingFrequency: PropTypes.string.isRequired,
     }).isRequired,
 };
 

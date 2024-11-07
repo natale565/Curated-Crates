@@ -4,6 +4,7 @@ const typeDefs = `
         name: String
         email: String
         password: String
+        orders: [Order]
     }
     
     type SubscriptionBox {
@@ -12,15 +13,15 @@ const typeDefs = `
         description: String
         price: Float
         shippingFrequency: String
-        images: [String]
+        image: String
         items: [String]
     }
 
     type Order {
         _id: ID
         user: User
-        box: SubscriptionBox
-        status: String
+        subscriptionBoxes: [SubscriptionBox]
+        orderStatus: String
         startDate: String
         endDate: String
         createdAt: String
@@ -52,6 +53,7 @@ const typeDefs = `
         shippingFrequency: String
         items: [String]
         image: String
+        purchaseQuantity: Int
     }
 
     type Query {
@@ -60,18 +62,19 @@ const typeDefs = `
         getSubscriptionBox(_id: ID!): SubscriptionBox
         getUserOrders(userId: ID): [Order]
         getBoxReviews(boxId: ID): [Review]
+
     }
 
     type Mutation {
         register(name: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         addSubscriptionBox(name: String!, description: String!, price: Float!, shippingFrequency: String!, items:[String]): SubscriptionBox
-        updateSubscriptionBox(id: ID!, title: String, description: String, price: Float, shippingFrequency: String, items: [String]): SubscriptionBox
+        updateSubscriptionBox(id: ID!, name: String, description: String, price: Float, shippingFrequency: String, items: [String]): SubscriptionBox
         deleteSubscriptionBox(id: ID!): Boolean
         addOrder(boxId: ID): Order
         updateOrderStatus(id: ID, status: String): Order
         addReview(boxId: ID, rating: Int, content: String): Review
-        checkout(SubscriptionBox: [SubscriptionBoxInput]): Checkout
+        checkout(subscriptionBoxes: [SubscriptionBoxInput]): Checkout
 
     }
 `;

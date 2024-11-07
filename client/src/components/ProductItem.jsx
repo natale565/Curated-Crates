@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useStoreContext } from '../utils/GlobalState';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../utils/actions";
 import { idbPromise } from '../utils/helpers';
@@ -8,8 +7,20 @@ import { useState } from 'react';
 
 function ProductItem(item) {
     const [state, dispatch] = useStoreContext();
+<<<<<<< HEAD
+    const {
+        image,
+        name,
+        _id,
+        description,
+        items = [],
+        price,
+        shippingFrequency,
+    } = item;
+=======
     const { images, name, _id, description, items = [], price } = item;
     const { cart } = state;
+>>>>>>> main
 
     // State for select dropdown
     const [shippingFrequency, setFrequency] = useState('');
@@ -18,7 +29,12 @@ function ProductItem(item) {
     };
 
     const addToCart = () => {
+<<<<<<< HEAD
+        const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+
+=======
         const itemInCart = cart.find((cartItem) => cartItem._id === _id);
+>>>>>>> main
         if(itemInCart) {
             dispatch({
                 type: UPDATE_CART_QUANTITY,
@@ -34,13 +50,44 @@ function ProductItem(item) {
         } else {
             dispatch({
                 type: ADD_TO_CART,
+<<<<<<< HEAD
+                subscriptionBox: { ...item, purchaseQuantity: 1 }
+=======
                 product: { ...item, shippingFrequency: shippingFrequency, purchaseQuantity: 1 }
+>>>>>>> main
             });
             idbPromise('cart', 'put', { ...item, shippingFrequency: shippingFrequency, purchaseQuantity: 1 });
         }
     };
 
     return (
+<<<<<<< HEAD
+        <>
+            
+            <Box component="div" sx={{ display: 'flex', gap: 2 }}>
+                <Box component="section" sx={{ p: 2, border: '1px solid grey', flex: 1 }}>
+                      <img
+                        alt={name}
+                        src={`/images/${image}`}
+                        />
+                        <p>{name}</p>
+                        <div>
+                            <div>
+                                <span>{description}</span>
+                            </div>
+                            <div>
+                                <span>{items.join(', ')}</span>
+                            </div>
+                            <div>
+                                <span>Price: ${price}</span>
+                            </div>
+                            <div>
+                                <span>Shipping Frequency: {shippingFrequency}</span>
+                            </div>
+                            <button onClick={addToCart}>Add to cart</button>
+                        </div>
+                </Box>
+=======
         <Box
             sx={{
                 width: '220px',
@@ -119,6 +166,7 @@ function ProductItem(item) {
                 }}
             >
                 Add to cart
+>>>>>>> main
             </Box>
         </Box>
     );

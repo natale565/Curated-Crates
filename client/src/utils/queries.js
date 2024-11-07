@@ -18,7 +18,7 @@ query getSubscriptionBoxes {
         description
         price
         shippingFrequency
-        images
+        image
         items
     }
 }
@@ -32,7 +32,7 @@ query getSubscriptionBox($_id: ID!) {
         description
         price
         shippingFrequency
-        images
+        image
         items
     }
 }
@@ -42,7 +42,7 @@ export const GET_USER_ORDERS = gql`
 query getUserOrders($userId: ID) {
     getUserOrders(userId: $userId) {
         _id
-        box {
+        boxes {
             _id
             name
         }
@@ -67,16 +67,4 @@ query getBoxReviews($boxId: ID!) {
 }
 `;
 
-export const ADD_USER = gql`
-query addUser($name: String!, $email: String!, $password: String!) {
-    register(name: $name, email: $email, password: $password) {
-        token
-        user {
-            _id
-            email
-            name
-        }
-    }
-}
-`;
 

@@ -19,8 +19,10 @@ const subscriptionBoxSchema = new Schema({
         enum: ['weekly', 'monthly', 'quaterly'],
         default: 'monthly'
     },
-    images: [String],
-    items: [String],
+    image: { 
+        type: String
+    },
+    items: [String]
 });
 
 const SubscriptionBox = model('SubscriptionBox', subscriptionBoxSchema);
