@@ -74,7 +74,6 @@ CartItem.propTypes = {
         price: PropTypes.number.isRequired,
         shippingFrequency: PropTypes.string.isRequired,
         purchaseQuantity: PropTypes.number.isRequired,
-        shippingFrequency: PropTypes.string.isRequired,
     }).isRequired,
 };
 
