@@ -1,4 +1,5 @@
-import Box from '@mui/material/Box';
+import { Box, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function Steps() {
     // Shared styles
@@ -40,6 +41,24 @@ function Steps() {
 
     return (
         <>
+         <Link to="/" style={{ textDecoration: 'none' }}>
+                    <Button 
+                        variant="contained" 
+                        sx={{
+                            backgroundColor: '#333',
+                            color: 'white',
+                            '&:hover': {
+                                backgroundColor: '#555',
+                            },
+                            padding: '8px 16px',
+                            fontSize: '0.875rem',
+                            marginTop: '16px', 
+                            marginBottom: '16px',
+                        }}
+                    >
+                        ← Back to Subscription Boxes
+                    </Button>
+                </Link>
             <Box sx={{ display: 'flex', gap: 3, justifyContent: 'center', mb: 3 }}>
                 <h2>Enjoy Carefully Selected Items That Fit Your Interests! Here&apos;s How It Works:</h2>
             </Box>

@@ -1,14 +1,29 @@
 import { gql } from '@apollo/client';
 
-export const GET_CURRENT_USER = gql`
-query me {
-    me {
-        _id
-        email
-        name
+export const QUERY_USER = gql`
+    query user{
+        user {
+            _id
+            email
+            name
+            orders {
+                _id
+                orderStatus
+                createdAt
+                subscriptionBoxes {
+                    _id
+                    name
+                    description
+                    price
+                    shippingFrequency
+                    image
+                    items
+                }
+            }
+        }
     }
-}
 `;
+
 
 export const GET_SUBSCRIPTION_BOXES = gql`
 query getSubscriptionBoxes {
@@ -52,9 +67,9 @@ query getUserOrders($userId: ID) {
 }
 `;
 
-export const GET_BOX_REVIEWS = gql`
-query getBoxReviews($boxId: ID!) {
-    getBoxReviews(boxId: $boxId) {
+export const QUER_REVIEWS = gql`
+query reviews($boxId: ID!) {
+    reviews(boxId: $boxId) {
         _id
         user {
             _id

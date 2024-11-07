@@ -64,7 +64,7 @@ function ProductItem(item) {
                         alt={name} 
                         sx={{ width: '100%', height: 'auto', mb: 1 }} 
                     />
-                    <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1rem', mb: 0.5 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.5rem', mb: 0.5 }}>
                         {name}
                     </Typography>
                 <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
@@ -80,6 +80,7 @@ function ProductItem(item) {
                     value={selectedFrequency}
                     onChange={handleFrequencyChange}
                     style={{
+                        marginTop: '10px',
                         marginBottom: '10px',
                         padding: '5px',
                         fontSize: '1em',
@@ -87,7 +88,7 @@ function ProductItem(item) {
                         backgroundColor: '#333',
                     }}
                 >
-                    <option value="" disabled>Select Shipping Frequency</option>
+                    <option value="" hidden>Select Shipping Frequency</option>
                     <option value="monthly">Monthly</option>
                     <option value="quarterly">Quarterly</option>
                 </select>

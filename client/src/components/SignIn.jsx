@@ -34,7 +34,6 @@ function SignIn(props) {
       }
     } catch (e) {
       console.log(e);
-      // Display error to the user
       alert('Login failed. Please check your credentials.');
     }
   };
@@ -88,13 +87,6 @@ function SignIn(props) {
                 <FormControlLabel control={<Checkbox name='rememberMe' checked={formState.rememberMe} onChange={handleChange} color='primary' />} label='Remember me'/>
                 <Button type='submit' fullWidth variant='contained' sx={{mt: 1}}>Sign In</Button>
             </Box>
-            {/* <Grid container justifyContent='space-between' sx={{mt: 1}}>
-                <Grid item>
-                    <Link component={RouterLink} to='/forgot'>
-                    Forgot password?
-                    </Link>
-                </Grid>
-            </Grid> */}
  
           </Paper>
         </Container>

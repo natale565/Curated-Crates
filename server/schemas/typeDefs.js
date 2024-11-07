@@ -57,12 +57,11 @@ const typeDefs = `
     }
 
     type Query {
-        me: User   
+        user: User   
         getSubscriptionBoxes: [SubscriptionBox]
         getSubscriptionBox(_id: ID!): SubscriptionBox
-        getUserOrders(userId: ID): [Order]
-        getBoxReviews(boxId: ID): [Review]
-
+        reviews(boxId: ID): [Review]
+        order(_id: ID!): Order
     }
 
     type Mutation {

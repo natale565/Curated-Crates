@@ -8,11 +8,11 @@ function HomePage() {
             <Box
                 component="h1"
                 sx={{
-                    fontSize: '2.5rem',       // Adjust font size
-                    fontWeight: 'bold',       // Make it bold
-                    textAlign: 'center',      // Center the text
-                    color: 'white',    // Use MUI theme color
-                    marginBottom: 4,          // Add spacing below
+                    fontSize: '2.5rem',
+                    fontWeight: 'bold',
+                    textAlign: 'center', 
+                    color: 'white',
+                    marginBottom: 4,
                 }}
             >
                 Welcome to Curated Crates
