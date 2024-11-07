@@ -7,6 +7,7 @@ import CartItem from '../CartItem';
 import AuthService from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
+import Badge from '@mui/material/Badge'; // Import Badge component
 import './style.css';
 
 const stripePromise = loadStripe('pk_test_51QG7vwCeKQc4PDCDTjHSQZJ1MfZobJi8ZPJ5RUCuM3bXBMYWer2FZp70UqLdleKo7mmzX0fC7hwoJdI0H8Plrn6300Fyi9QJlH');
@@ -54,9 +55,11 @@ const Cart = () => {
     if (!state.cartOpen) {
         return (
             <div className="cart-closed" onClick={toggleCart}>
+                <Badge badgeContent={state.cart.length} color="secondary" overlap="circular">
                 <span role="img" aria-label="trash">
                     🛒
                 </span>
+                </Badge>
             </div>
         );
     }

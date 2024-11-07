@@ -9,11 +9,10 @@ const resolvers = {
             if (!context.user) throw new AuthenticationError('Authentication required');
             return await User.findById(context.user.id);
         },
-        getSubscriptionBox: async (parent, { _id }) => await SubscriptionBox.findById(_id).select('_id name description price shippingFrequency items image'),
-        getSubscriptionBoxes: async (parent) => await SubscriptionBox.find().select('_id name description price shippingFrequency items image'),
+        getSubscriptionBox: async (parent, { _id }) => await SubscriptionBox.findById(_id),
+        getSubscriptionBoxes: async (parent) => await SubscriptionBox.find(),
         getUserOrders: async (parent, { userId }) => await Order.find({ user: userId }).populate('box'),
         getBoxReviews: async (parent, { boxId }) => await Review.find({ box: boxId }).populate('user'),
-
     },
     Mutation: {
         register: async (parent, { name, email, password }) => {
@@ -89,16 +88,16 @@ const resolvers = {
             });
         }
 
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
-            line_items,
-            mode: 'payment',
-            success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${url}/`,
-        });
+            const session = await stripe.checkout.sessions.create({
+                payment_method_types: ['card'],
+                line_items,
+                mode: 'payment',
+                success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${url}/`,
+            });
 
-        return { session: session.id };
-    },
+            return { session: session.id };
+        },
     }
 };
 
