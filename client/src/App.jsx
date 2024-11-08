@@ -10,7 +10,7 @@ import Auth from './utils/auth';
 import { Box } from '@mui/material';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

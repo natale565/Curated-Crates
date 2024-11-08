@@ -93,7 +93,7 @@ const resolvers = {
             return review;
         },
         checkout: async (parent, args, context) => {
-            const url = context.headers?.referer ? new URL(context.headers.referer).origin : 'http://localhost:3001';        
+            const url = new URL(context.headers.referer).origin;        
             const order = await Order.create({ 
             user: context.user._id,
             subscriptionBoxes: args.subscriptionBoxes.map(({ _id }) => _id),
