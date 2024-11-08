@@ -6,7 +6,7 @@ const { users, subscriptionBoxes, orders, reviews } = require('./data');
 
 async function seedDatabase() {
     try {
-        await mongoose.connect(process.env.MONGO_URI, {
+        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/curated-crates', {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
