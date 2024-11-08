@@ -1,80 +1,50 @@
-import PropTypes from 'prop-types';
-import { useStoreContext } from "../utils/GlobalState";
-import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../utils/actions";
-import { idbPromise } from "../utils/helpers";
+import { Box, Typography, Button } from '@mui/material';
+import { useStoreContext } from '../utils/GlobalState';
+import { REMOVE_FROM_CART } from '../utils/actions';
+import { idbPromise } from '../utils/helpers';
+import { FaTrashAlt } from 'react-icons/fa'; // Trash icon
 
-const CartItem = ({ item }) => {
-    const [, dispatch] = useStoreContext();
+function CartItem({ item }) {
+    const [state, dispatch] = useStoreContext();
 
-    const removeFromCart = (item) => {
+    const removeItem = () => {
         dispatch({
             type: REMOVE_FROM_CART,
-            _id: item._id
+            _id: item._id,
         });
-        idbPromise('cart', 'delete', {...item});
+        idbPromise('cart', 'delete', { _id: item._id });
     };
 
-    const onChange = (e) => {
-        const value = e.target.value;
-        if (value === '0') {
-            dispatch({
-                type: REMOVE_FROM_CART,
-                _id: item._id
-            });
-            idbPromise('cart', 'delete', { ...item });
-        } else {
-            dispatch({
-                type: UPDATE_CART_QUANTITY,
-                _id: item._id,
-                purchaseQuantity: parseInt(value)
-            });
-            idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
-        }
-    }
-
     return (
-        <div className="flex-row">
-            <div>
-                <img
-                src={`/images/${item.image}`}
-                alt=""
-                />
-            </div>
-            <div className='cart-item-details'>
-                    <div>Box: {item.name}</div>
-                    <div>Price: ${item.price}</div>
-                    <div>Shipping Frequency: {item.shippingFrequency}</div>
-                <div>
-                    <span>Qty:</span>
-                    <input
-                    type="number"
-                    placeholder="1"
-                    value={item.purchaseQuantity}
-                    onChange={onChange}
-                    />
-                    <span
-                    role="img"
-                    aria-label="trash"
-                    onClick={() => removeFromCart(item)}
-                    >
-                     🗑️
-                    </span>
-                </div>
-            </div>
-        </div>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+            <Box sx={{ display: 'flex', gap: 2 }}>
+                <Typography variant="body1">{item.name}</Typography>
+            </Box>
+
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Button
+                    onClick={removeItem}
+                    sx={{
+                        backgroundColor: 'transparent',
+                        border: 'none',
+                        cursor: 'pointer',
+                        '&:hover': {
+                            color: '#f44336',
+                        },
+                    }}
+                >
+                    <FaTrashAlt size={14} />
+                </Button>
+                <Typography variant="body1">
+                {item.shippingFrequency.charAt(0).toUpperCase() + item.shippingFrequency.slice(1)}
+                </Typography>
+                <Typography variant="body1">{item.purchaseQuantity}</Typography>
+                <Typography varient='body1'>{item.price}</Typography>
+
+
+            </Box>
+        </Box>
     );
 }
-
-CartItem.propTypes = {
-    item: PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        image: PropTypes.string,
-        price: PropTypes.number.isRequired,
-        shippingFrequency: PropTypes.string.isRequired,
-        purchaseQuantity: PropTypes.number.isRequired,
-    }).isRequired,
-};
 
 export default CartItem;

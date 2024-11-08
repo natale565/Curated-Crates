@@ -5,15 +5,41 @@ const stripe = require('stripe')('sk_test_51QG7vwCeKQc4PDCDipKVL3UkOT9CCFdBC2XLg
 
 const resolvers = {
     Query: {
-        me: async (parent, args, context) => {
-            if (!context.user) throw new AuthenticationError('Authentication required');
-            return await User.findById(context.user.id);
+        user: async (parent, args, context) => {
+            if (context.user) {
+                const user = await User.findById(context.user._id)
+                    .populate({
+                        path: 'orders',
+                        strictPopulate: false, 
+                        populate: {
+                            path: 'subscriptionBoxes',
+                            strictPopulate: false, 
+                            model: 'SubscriptionBox'
+                        }
+                    });
+        
+                return user;
+            }
+            throw new AuthenticationError('Authentication required');
         },
-        getSubscriptionBox: async (parent, { _id }) => await SubscriptionBox.findById(_id).select('_id name description price shippingFrequency items image'),
-        getSubscriptionBoxes: async (parent) => await SubscriptionBox.find().select('_id name description price shippingFrequency items image'),
-        getUserOrders: async (parent, { userId }) => await Order.find({ user: userId }).populate('box'),
-        getBoxReviews: async (parent, { boxId }) => await Review.find({ box: boxId }).populate('user'),
+        
+        getSubscriptionBox: async (parent, { _id }) => await SubscriptionBox.findById(_id),
+        getSubscriptionBoxes: async (parent) => await SubscriptionBox.find(),
+        order: async (parent, { _id }, context) => {
+            if (context.user) {
+                const user = await User.findById(context.user._id).populate
+                ({
+                    path: 'orders.subscriptionBoxes',
+                    model: 'SubscriptionBox'
+                });
 
+                const order = user.orders.id(_id);
+                return order;
+            }
+
+            throw AuthenticationError
+        },
+        reviews: async (parent, { boxId }) => await Review.find({ box: boxId }).populate('user'),
     },
     Mutation: {
         register: async (parent, { name, email, password }) => {
@@ -70,7 +96,7 @@ const resolvers = {
             const url = context.headers?.referer ? new URL(context.headers.referer).origin : 'http://localhost:3001';        
             const order = await Order.create({ 
             user: context.user._id,
-            subscritionBoxes: args.subscriptionBoxes.map(({ _id }) => _id),
+            subscriptionBoxes: args.subscriptionBoxes.map(({ _id }) => _id),
         });
         const line_items = [];
 
@@ -83,22 +109,22 @@ const resolvers = {
                         description: subscriptionBox.description,
                         images: [`${url}/images/${subscriptionBox.image}`]
                     },
-                    unit_amount: subscriptionBox.price * 100,
+                    unit_amount: Math.round(subscriptionBox.price * 100),
                 },
                 quantity: subscriptionBox.purchaseQuantity,
             });
         }
 
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
-            line_items,
-            mode: 'payment',
-            success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${url}/`,
-        });
+            const session = await stripe.checkout.sessions.create({
+                payment_method_types: ['card'],
+                line_items,
+                mode: 'payment',
+                success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${url}/`,
+            });
 
-        return { session: session.id };
-    },
+            return { session: session.id };
+        },
     }
 };
 
