@@ -70,7 +70,7 @@ const typeDefs = `
         addSubscriptionBox(name: String!, description: String!, price: Float!, shippingFrequency: String!, items:[String]): SubscriptionBox
         updateSubscriptionBox(id: ID!, name: String, description: String, price: Float, shippingFrequency: String, items: [String]): SubscriptionBox
         deleteSubscriptionBox(id: ID!): Boolean
-        addOrder(boxId: ID): Order
+        addOrder(subscriptionBoxes: [ID]!): Order
         updateOrderStatus(id: ID, status: String): Order
         addReview(boxId: ID, rating: Int, content: String): Review
         checkout(subscriptionBoxes: [SubscriptionBoxInput]): Checkout

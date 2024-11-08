@@ -10,20 +10,20 @@ function Success() {
   useEffect(() => {
     async function saveOrder() {
       const cart = await idbPromise('cart', 'get');
-      const products = cart.map((item) => item._id);
+      const subscriptionBoxes = cart.map((item) => item._id);
 
-      if (products.length) {
-        const { data } = await addOrder({ variables: { products } });
-        const productData = data.addOrder.products;
+      if (subscriptionBoxes.length) {
+        const { data } = await addOrder({ variables: { subscriptionBoxes } });
+        const subscriptionBoxData = data.addOrder.subscriptionBoxes;
 
-        productData.forEach((item) => {
+        subscriptionBoxData.forEach((item) => {
           idbPromise('cart', 'delete', item);
         });
       }
 
       setTimeout(() => {
         window.location.assign('/');
-      }, 3000);
+      }, 1000);
     }
 
     saveOrder();

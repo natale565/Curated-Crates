@@ -77,13 +77,15 @@ const resolvers = {
             await SubscriptionBox.findByIdAndDelete(id);
             return true;
         },
-        addOrder: async (parent, { boxId }, context) => {
-            if (!context.user) {
-                throw new AuthenticationError('User not authenticated');
+        addOrder: async (parent, { subscriptionBoxes }, context) => {
+            if (context.user) {
+                const order = new Order({ subscriptionBoxes });
+                await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+                
+                return order;
             }
-            const order = new Order({ user: context.user.id, box: boxId, startDate: new Date() });
-            await order.save();
-            return order;
+
+            throw AuthenticationError;
         }, 
         updateOrderStatus: async (parent, { id, status }) => {
             return await Order.findByIdAndUpdate(id, { status }, { new: true });
