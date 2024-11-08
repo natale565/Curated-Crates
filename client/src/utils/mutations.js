@@ -24,11 +24,9 @@ export const LOGIN = gql`
 `;
 
 export const ADD_ORDER= gql`
-    mutation addOrder($boxIds: [ID!]!) {
-        addOrder(boxId: $boxIds) {
-            _id
-            orderStatus
-            startDate
+    mutation addOrder($subscriptionBoxes: [ID!]!) {
+        addOrder(subscriptionBoxes: $subscriptionBoxes) {
+            createdAt
             subscriptionBoxes {
                 _id
                 name 
