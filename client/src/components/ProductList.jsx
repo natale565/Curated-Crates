@@ -40,6 +40,7 @@ function ProductList() {
         gutterBottom
         sx={{
           position: "relative",
+          padding: "50px",
           display: "inline-block",
           background:
             "linear-gradient(90deg, #ffffff, #FFBC00, #ff8800, #FFBC00, #ffffff)",
