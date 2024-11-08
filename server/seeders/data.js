@@ -13,7 +13,7 @@ const users = [
 
 const subscriptionBoxes = [
     {
-        name: "Monthly Coffee Box",
+        name: "Premium Coffee Box",
         description: "A box of premium coffee beans from around the world.",
         price: 39.99,
         shippingFrequency: 'monthly',
@@ -22,7 +22,7 @@ const subscriptionBoxes = [
     },
     {
         name: "Gourmet Snack Box",
-        description: "A variety of gourmet snacks for your enjoyment.",
+        description: "A variety mix of gourmet and decadent snacks for your enjoyment.",
         price: 29.99,
         shippingFrequency: 'monthly',
         items: ["Artisan Potato Chips", "Organic Dried Fruits", "80% Cocoa Premium Dark Chocolate"],
@@ -46,7 +46,7 @@ const subscriptionBoxes = [
     },
     {
         name: "Mens Grooming Box",
-        description: "Items to keep you looking sharp and feeling great.",
+        description: "Items that keep you looking sharp and feeling great for any occasion.",
         price: 49.99,
         shippingFrequency: 'monthly',
         items: [ "Shaving Cream", "Aftershave", "Beard Oil"],
@@ -54,7 +54,7 @@ const subscriptionBoxes = [
     },
     {
         name: "Dog Lovers Box",
-        description: "Don't forget about your furry friend!",
+        description: "Don't forget about your furry friend! This box is packed with carefully selected treats and toys.",
         price: 24.99,
         shippingFrequency: 'monthly',
         items: [ "Stuffed Toys", "Treats", "Leash"],
