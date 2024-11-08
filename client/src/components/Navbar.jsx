@@ -3,7 +3,6 @@ import { AppBar, Toolbar, Typography, Stack, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import './style.css';
 
-// eslint-disable-next-line react/prop-types
 function NavBar({ isAuthenticated, onLogout }) {
     return (
         <AppBar position='static' sx={{
@@ -12,7 +11,6 @@ function NavBar({ isAuthenticated, onLogout }) {
             boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
         }}>
             <Toolbar>
-                {/* Container for logo and title */}
                 <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
                     <Box 
                         component="img" 
@@ -32,11 +30,10 @@ function NavBar({ isAuthenticated, onLogout }) {
                         color='inherit'
                         sx={{
                             transition: 'all 0.3s ease',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
-                                animation: 'glow 1.5s infinite alternate',
+                             textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
+                                    '&:hover': {
+                                        textShadow: '0 0 20px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glowText 1.5s infinite alternate',
                             },
                         }}
                     >
@@ -49,11 +46,10 @@ function NavBar({ isAuthenticated, onLogout }) {
                         color='inherit'
                         sx={{
                             transition: 'all 0.3s ease',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            '&:hover': {
-                                boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
-                                animation: 'glow 1.5s infinite alternate',
+                            textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
+                                    '&:hover': {
+                                        textShadow: '0 0 20px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glowText 1.5s infinite alternate',
                             },
                         }}
                     >
@@ -68,11 +64,10 @@ function NavBar({ isAuthenticated, onLogout }) {
                                 color='inherit'
                                 sx={{
                                     transition: 'all 0.3s ease',
-                                    position: 'relative',
-                                    overflow: 'hidden',
+                                     textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
                                     '&:hover': {
-                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
-                                        animation: 'glow 1.5s infinite alternate',
+                                        textShadow: '0 0 20px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glowText 1.5s infinite alternate',
                                     },
                                 }}
                             >
@@ -84,11 +79,10 @@ function NavBar({ isAuthenticated, onLogout }) {
                                 color='inherit'
                                 sx={{
                                     transition: 'all 0.3s ease',
-                                    position: 'relative',
-                                    overflow: 'hidden',
+                                    textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
                                     '&:hover': {
-                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
-                                        animation: 'glow 1.5s infinite alternate',
+                                        textShadow: '0 0 20px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glowText 1.5s infinite alternate',
                                     },
                                 }}
                             >
@@ -103,11 +97,10 @@ function NavBar({ isAuthenticated, onLogout }) {
                                 color='inherit'
                                 sx={{
                                     transition: 'all 0.3s ease',
-                                    position: 'relative',
-                                    overflow: 'hidden',
+                                   textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
                                     '&:hover': {
-                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
-                                        animation: 'glow 1.5s infinite alternate',
+                                        textShadow: '0 0 20px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glowText 1.5s infinite alternate',
                                     },
                                 }}
                             >
@@ -120,11 +113,10 @@ function NavBar({ isAuthenticated, onLogout }) {
                                 color='inherit'
                                 sx={{
                                     transition: 'all 0.3s ease',
-                                    position: 'relative',
-                                    overflow: 'hidden',
+                                    textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
                                     '&:hover': {
-                                        boxShadow: '0 0 20px rgba(255, 255, 255, 1)',
-                                        animation: 'glow 1.5s infinite alternate',
+                                        textShadow: '0 0 20px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1)',
+                                        animation: 'glowText 1.5s infinite alternate',
                                     },
                                 }}
                             >
@@ -136,12 +128,12 @@ function NavBar({ isAuthenticated, onLogout }) {
             </Toolbar>
             <style>
                 {`
-                    @keyframes glow {
+                    @keyframes glowText {
                         0% {
-                            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
                         }
                         100% {
-                            box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+                            text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
                         }
                     }
                 `}

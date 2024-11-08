@@ -34,9 +34,39 @@ function ProductList() {
 
     return (
         <div style={{ maxWidth: '1200px', margin: 'auto', textAlign: 'center' }}>
-            <Typography variant="h2" component="h2" gutterBottom>
-                Our Subscription Boxes
-            </Typography>
+          <Typography
+    variant="h2"
+    component="h2"
+    gutterBottom
+    sx={{
+        position: 'relative',
+        display: 'inline-block',
+        fontWeight: 'bold',
+        background: 'linear-gradient(90deg, #ffffff, #ffddc1, #ff8800, #ffddc1, #ffffff)',
+        backgroundSize: '300% 100%', // Makes the background three times as wide
+        backgroundClip: 'text',
+        WebkitBackgroundClip: 'text',
+        color: 'transparent',
+        animation: 'glimmer-horizontal 6s linear infinite'
+    }}
+    
+>
+    Our Subscription Boxes
+    
+</Typography>
+<style>
+                {`
+                    @keyframes glimmer-horizontal {
+                        0% {
+                            background-position: -200%;
+                        }
+                        100% {
+                            background-position: 200%;
+                        }
+                    }
+                `}
+            </style>
+
             <Box 
                 sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center' }}
             >
