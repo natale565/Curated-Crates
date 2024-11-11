@@ -39,6 +39,7 @@ function ProductList() {
         component="h2"
         gutterBottom
         sx={{
+          fontFamily: 'Quicksand',
           position: "relative",
           padding: "50px",
           display: "inline-block",

@@ -64,16 +64,16 @@ function ProductItem(item) {
                     alt={name} 
                     sx={{ width: '100%', height: 'auto', mb: 1 }} 
                 />
-                <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.5rem', mb: 0.5 }}>
+                <Typography variant="h6" sx={{ fontFamily: 'Quicksand', fontWeight: 'bold', fontSize: '1.5rem', mb: 0.5 }}>
                     {name}
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
+                <Typography variant="body2" sx={{ fontFamily: 'Quicksand', color: 'white', mb: 1 }}>
                     {description}
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
+                <Typography variant="body2" sx={{ fontFamily: 'Quicksand', color: 'white', mb: 1 }}>
                     {items.join(', ')}
                 </Typography>
-                <Typography variant="body1" sx={{ fontWeight: 'bold', mb: 1, color: 'white' }}>
+                <Typography variant="body1" sx={{ fontFamily: 'Quicksand', fontWeight: 'bold', mb: 1, color: 'white' }}>
                     ${price}
                 </Typography>
                 <select

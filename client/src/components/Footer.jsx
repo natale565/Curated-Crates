@@ -38,7 +38,7 @@ function Footer() {
                  }}>
                 
                 {/* Centered Typography */}
-                <Typography variant="h6" sx={{ textAlign: 'center', flexGrow: 1 }}>
+                <Typography variant="h6" sx={{ fontFamily: 'Quicksand', textAlign: 'center', flexGrow: 1 }}>
                     Curated Crates©
                 </Typography>
                 
