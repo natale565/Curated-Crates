@@ -7,21 +7,19 @@ const resolvers = {
     Query: {
         user: async (parent, args, context) => {
             if (context.user) {
-                const user = await User.findById(context.user._id)
-                    .populate({
-                        path: 'orders',
-                        strictPopulate: false, 
-                        populate: {
-                            path: 'subscriptionBoxes',
-                            strictPopulate: false, 
-                            model: 'SubscriptionBox'
-                        }
-                    });
-        
+              const user = await User.findById(context.user._id)
+                .populate({
+                  path: 'orders',
+                  populate: {
+                    path: 'subscriptionBoxes',
+                    model: 'SubscriptionBox',
+                  },
+                });
                 return user;
             }
             throw new AuthenticationError('Authentication required');
-        },
+          },
+          
         
         getSubscriptionBox: async (parent, { _id }) => await SubscriptionBox.findById(_id),
         getSubscriptionBoxes: async (parent) => await SubscriptionBox.find(),
@@ -79,14 +77,28 @@ const resolvers = {
         },
         addOrder: async (parent, { subscriptionBoxes }, context) => {
             if (context.user) {
-                const order = new Order({ subscriptionBoxes });
-                await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
-                
-                return order;
+              const order = await Order.create({
+                subscriptionBoxes,
+                user: context.user._id,
+              });
+          
+              await User.findByIdAndUpdate(
+                context.user._id,
+                { $push: { orders: order } },
+                { new: true }
+              );
+              
+              const populatedOrder = await Order.findById(order._id)
+              .populate({
+                path: 'subscriptionBoxes',
+                model: 'SubscriptionBox',
+              });                       
+              return populatedOrder;
             }
-
-            throw AuthenticationError;
-        }, 
+          
+            throw new AuthenticationError('You need to be logged in!');
+          },
+             
         updateOrderStatus: async (parent, { id, status }) => {
             return await Order.findByIdAndUpdate(id, { status }, { new: true });
         },

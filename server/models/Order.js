@@ -15,7 +15,7 @@ const orderSchema = new Schema({
     ],
     orderStatus: {
         type: String,
-        enum: ['active', 'paused', 'cancelled'],
+        enum: ['active', 'inactive'],
         default: 'active'
     },
     startDate: {
