@@ -1,33 +1,43 @@
+// In src/pages/Success.jsx
+
 import { useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import Jumbotron from '../components/Jumbotron';
 import { ADD_ORDER } from '../utils/mutations';
+import { QUERY_USER } from '../utils/queries'; 
 import { idbPromise } from '../utils/helpers';
 
 function Success() {
-  const [addOrder] = useMutation(ADD_ORDER);
+  const [addOrder] = useMutation(ADD_ORDER, {
+    refetchQueries: [{ query: QUERY_USER }],
+  });
 
   useEffect(() => {
     async function saveOrder() {
       const cart = await idbPromise('cart', 'get');
       const subscriptionBoxes = cart.map((item) => item._id);
-
+  
       if (subscriptionBoxes.length) {
-        const { data } = await addOrder({ variables: { subscriptionBoxes } });
+        const { data } = await addOrder({
+          variables: { subscriptionBoxes },
+          refetchQueries: [{ query: QUERY_USER }],
+        });
+          
         const subscriptionBoxData = data.addOrder.subscriptionBoxes;
-
+  
         subscriptionBoxData.forEach((item) => {
           idbPromise('cart', 'delete', item);
         });
       }
-
+  
       setTimeout(() => {
         window.location.assign('/');
       }, 1000);
     }
-
+  
     saveOrder();
   }, [addOrder]);
+  
 
   return (
     <div>

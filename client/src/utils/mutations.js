@@ -23,22 +23,24 @@ export const LOGIN = gql`
     }
 `;
 
-export const ADD_ORDER= gql`
-    mutation addOrder($subscriptionBoxes: [ID!]!) {
-        addOrder(subscriptionBoxes: $subscriptionBoxes) {
-            createdAt
-            subscriptionBoxes {
-                _id
-                name 
-                description
-                price
-                shippingFrequency
-                items
-                image
-            }
-        }
+export const ADD_ORDER = gql`
+  mutation addOrder($subscriptionBoxes: [ID!]!) {
+    addOrder(subscriptionBoxes: $subscriptionBoxes) {
+      _id
+      createdAt
+      subscriptionBoxes {
+        _id
+        name
+        description
+        price
+        shippingFrequency
+        items
+        image
+      }
     }
+  }
 `;
+
 
 export const UPDATE_ORDER_STATUS = gql`
     mutation updateOrderStatus($id: ID!, $status: String!) {
