@@ -23,7 +23,7 @@ function NavBar({ isAuthenticated, onLogout }) {
                 animation: "shake 2s infinite alternate",
             animationDelay: "1s",}}
           />
-          <Typography variant="h6" component="div">
+          <Typography sx={{ fontFamily: 'Quicksand', }} variant="h6" component="div">
             Curated Crates
           </Typography>
         </Box>
@@ -34,6 +34,7 @@ function NavBar({ isAuthenticated, onLogout }) {
             to="/"
             color="inherit"
             sx={{
+              fontFamily: 'Quicksand',
               transition: "all 0.3s ease",
               "&:hover": {
                 textShadow:
@@ -50,6 +51,7 @@ function NavBar({ isAuthenticated, onLogout }) {
             to="/howitworks"
             color="inherit"
             sx={{
+              fontFamily: 'Quicksand',
               transition: "all 0.3s ease",
             
               "&:hover": {
@@ -69,6 +71,7 @@ function NavBar({ isAuthenticated, onLogout }) {
                 to="/dash"
                 color="inherit"
                 sx={{
+                  fontFamily: 'Quicksand',
                   transition: "all 0.3s ease",
                  
                   "&:hover": {
@@ -85,6 +88,7 @@ function NavBar({ isAuthenticated, onLogout }) {
                 onClick={onLogout}
                 color="inherit"
                 sx={{
+                  fontFamily: 'Quicksand',
                   transition: "all 0.3s ease",
                   
                   "&:hover": {
@@ -104,6 +108,7 @@ function NavBar({ isAuthenticated, onLogout }) {
                 to="/signup"
                 color="inherit"
                 sx={{
+                  fontFamily: 'Quicksand',
                   transition: "all 0.3s ease",
                   
                   "&:hover": {
@@ -121,6 +126,7 @@ function NavBar({ isAuthenticated, onLogout }) {
                 to="/signin"
                 color="inherit"
                 sx={{
+                  fontFamily: 'Quicksand',
                   transition: "all 0.3s ease",
                   
                   "&:hover": {

@@ -46,6 +46,7 @@ function Steps() {
         <Button
           variant="contained"
           sx={{
+            fontFamily: 'Quicksand',
             backgroundColor: "#333",
             color: "white",
             "&:hover": {
@@ -65,7 +66,8 @@ function Steps() {
           variant="h2"
           component="h2"
           sx={{
-            fontSize: "2.5rem",
+            fontFamily: 'Quicksand',
+            fontSize: "2.4rem",
             fontWeight: "bold",
             background:
               "linear-gradient(90deg, #ffffff, #FFBC00, #ff8800, #FFBC00, #ffffff)",

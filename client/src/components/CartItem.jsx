@@ -16,7 +16,7 @@ function CartItem({ item }) {
     };
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+        <Box sx={{  display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
             <Box sx={{ display: 'flex', gap: 2 }}>
                 <Typography variant="body1">{item.name}</Typography>
             </Box>
