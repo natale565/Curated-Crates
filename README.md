@@ -1,10 +1,19 @@
 # Curated Creates
 
-# Description
+## Table of Contents
+
+- [Description](#description)
+- [Technologies Used](#technologies-used)
+- [Live Web Page](#live-web-page)
+- [Example Of Functional Site](#example-of-functional-site)
+- [Contact](#contact)
+
+
+## Description
 
 Curated Crates is a lifestyle subscription service delivering handpicked, premium items designed to elevate your everyday. With flexible delivery options, we bring unique surprises right to your doorstep. Choose from three distinct box categories, each with multiple tiers for added exclusivity and value. At Curated Crates, every box is more than a delivery; it's a curated experience just for you.
 
-# Technologies Used
+## Technologies Used
 
 ### Front-End
 - React
@@ -23,9 +32,13 @@ Curated Crates is a lifestyle subscription service delivering handpicked, premiu
 - Mongoose
 
 
-# Live Web Page
+## Live Web Page
 
 [Click Here To View Webpage](https://curated-crates.onrender.com/)
+
+## Example Of Functional Site
+
+![gif](./client/public/images/9a1b8i.gif)
 
 ## Contact
 
