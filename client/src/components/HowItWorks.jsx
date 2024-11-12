@@ -16,6 +16,7 @@ function Steps() {
     textAlign: "left",
     gap: "10px",
     alignSelf: "flex-start",
+    backgroundColor: '#333'
   };
 
   const numberBoxStyles = {
