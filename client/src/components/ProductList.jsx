@@ -71,6 +71,7 @@ function ProductList() {
         sx={{
           display: "flex",
           flexWrap: "wrap",
+          paddingBottom: "60px",
           gap: "20px",
           justifyContent: "center",
         }}
