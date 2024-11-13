@@ -54,7 +54,7 @@ function Dash() {
             },
             padding: '8px 16px',
             fontSize: '0.875rem',
-            marginTop: '16px',
+            marginTop: '75px',
             marginBottom: '16px',
           }}
         >
@@ -99,19 +99,17 @@ function Dash() {
           </Box>
 
           {user.orders?.length > 0 ? (
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <Box sx={{alignItems: 'center' }}>
               {user.orders.map((order) => (
                 <Box
                   key={order._id}
                   sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    maxWidth: 300, // Width of each order box
-                    mx: 2, // Horizontal margin between boxes
-                    mb: 4, // Vertical margin between rows of orders
+                    mx: 4,
+                    mb: 6,
                     borderRadius: '10px',
                     boxShadow: 3,
+                    border: '1px solid',
+                    borderColor: 'white',
                     overflow: 'hidden',
                     textAlign: 'center',
                   }}
@@ -123,6 +121,7 @@ function Dash() {
                       fontWeight: 'bold',
                       color: order.orderStatus === 'active' ? 'green' : 'red',
                       mb: 2,
+                      mt: 2,
                     }}
                   >
                     Status: {order.orderStatus.charAt(0).toUpperCase() + order.orderStatus.slice(1)}
@@ -133,9 +132,9 @@ function Dash() {
                       <Box
                         key={_id || index}
                         sx={{
-                          maxWidth: 300,
                           mx: 2,
                           mb: 3,
+                          width: '75%',
                           borderRadius: '10px',
                           boxShadow: 3,
                           overflow: 'hidden',

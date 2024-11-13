@@ -3,20 +3,26 @@ import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 
 function Steps() {
-  // Shared styles
   const stepBoxStyles = {
     display: "flex",
-    flexDirection: "row", // Step number and image/text side by side
-    alignItems: "flex-start",
+    flexDirection: "row",  // Default direction for larger screens (side by side)
+    alignItems: "stretch",
+    height: "450px",
     border: "2px solid #ddd",
     borderRadius: "8px",
     boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
     p: 2,
+    mb: 2,
     minWidth: "300px",
     textAlign: "left",
     gap: "10px",
     alignSelf: "flex-start",
-    backgroundColor: '#333'
+    backgroundColor: '#333',
+    flex: 1, // Ensure that the boxes have equal space on larger screens
+    '@media (max-width: 600px)': {
+      flexDirection: 'column', // Stack vertically on small screens
+      height: 'auto',
+    },
   };
 
   const numberBoxStyles = {
@@ -30,15 +36,16 @@ function Steps() {
 
   const contentBoxStyles = {
     display: "flex",
-    flexDirection: "column", // Stack image on top of the text
-    alignItems: "flex-start", // Align image and text to the left
-    maxWidth: "400px", // Limit the text width to match image
+    flexDirection: "column",
+    alignItems: "flex-start",
+    maxWidth: "400px",
+    flexGrow: 1,
   };
 
   const textBoxStyles = {
-    textAlign: "left", // Align text to the left
-    marginTop: "10px", // Space between image and text
-    maxWidth: "400px", // Limit text to match the image width
+    textAlign: "left", 
+    marginTop: "10px", 
+    maxWidth: "400px",
   };
 
   return (
@@ -55,13 +62,14 @@ function Steps() {
             },
             padding: "8px 16px",
             fontSize: "0.875rem",
-            marginTop: "16px",
+            marginTop: "75px",
             marginBottom: "16px",
           }}
         >
           ← Back to Subscription Boxes
         </Button>
       </Link>
+
       <Box sx={{ display: "flex", gap: 3, justifyContent: "center", mb: 3 }}>
         <Typography
           variant="h2"
@@ -72,7 +80,7 @@ function Steps() {
             fontWeight: "bold",
             background:
               "linear-gradient(90deg, #ffffff, #FFBC00, #ff8800, #FFBC00, #ffffff)",
-            backgroundSize: "300% 100%", // Makes the background three times as wide
+            backgroundSize: "300% 100%",
             backgroundClip: "text",
             WebkitBackgroundClip: "text",
             color: "transparent",
@@ -80,8 +88,7 @@ function Steps() {
           }}
           gutterBottom
         >
-          Enjoy Carefully Selected Items That Fit Your Interests! Here&apos;s
-          How It Works:
+          Enjoy Carefully Selected Items That Fit Your Interests! Here&apos;s How It Works:
         </Typography>
         <style>
           {`
@@ -97,7 +104,7 @@ function Steps() {
         </style>
       </Box>
 
-      <Box sx={{ display: "flex", gap: 3, justifyContent: "center" }}>
+      <Box sx={{ display: "flex", gap: 3, justifyContent: "center", flexWrap: 'wrap' }}>
         {/* Step 1 */}
         <Box sx={stepBoxStyles}>
           <Box sx={numberBoxStyles}>
@@ -109,8 +116,8 @@ function Steps() {
               src="/images/How-It-Works-Step-1.jpg"
               alt="Step 1"
               style={{
-                maxWidth: "100%", // Ensures the image can scale down
-                height: "auto", // Maintain aspect ratio
+                maxWidth: "100%",
+                height: "300px", 
                 objectFit: "cover",
               }}
             />
@@ -134,14 +141,13 @@ function Steps() {
               alt="Step 2"
               style={{
                 maxWidth: "100%",
-                height: "auto",
+                height: "300px",
                 objectFit: "cover",
               }}
             />
             <Box sx={textBoxStyles}>
-              Pick Your Tier – Select a tier that matches your desired
-              experience. Higher tiers offer an even greater assortment of
-              premium items, tailored to enhance each delivery.
+              Choose your shipping frequency – Select a shipping frequency that matches your desired
+              experience.
             </Box>
           </Box>
         </Box>
@@ -158,7 +164,7 @@ function Steps() {
               alt="Step 3"
               style={{
                 maxWidth: "100%",
-                height: "auto",
+                height: "300px",
                 objectFit: "cover",
               }}
             />

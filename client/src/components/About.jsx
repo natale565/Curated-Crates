@@ -23,9 +23,9 @@ function BoxBasic() {
       </Typography>
       
       <Typography variant="body1" sx={{ fontFamily: 'Quicksand', fontSize: '18px', color: 'white', lineHeight: 1.6, }}>
-        Welcome to Curated Crates – where discovery meets delight! We’re a subscription service dedicated to delivering expertly curated boxes filled with items tailored to elevate your lifestyle. With options for monthly, bi-monthly, or quarterly deliveries, you’re in control of how often you indulge in new surprises.
+        Welcome to Curated Crates – where discovery meets delight! We’re a subscription service dedicated to delivering expertly curated boxes filled with items tailored to elevate your lifestyle. With options for monthly or quarterly deliveries, you’re in control of how often you indulge in new surprises.
         <br /><br />
-        Choose from our three unique box categories, each available in multiple tiers to match your taste and budget. As you move up the tiers, the value and exclusivity of your box increase, bringing you more premium and hand-selected items.
+        Choose from our unique box categories each with premium and hand selected items.
         <br /><br />
         At Curated Crates, we believe in making every delivery an experience – thoughtfully curated, just for you.
       </Typography>
