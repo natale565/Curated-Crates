@@ -4,7 +4,6 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Cart from './components/Cart';
 import { StoreProvider } from './utils/GlobalState';
 import Auth from './utils/auth';
 import { Box } from '@mui/material';
