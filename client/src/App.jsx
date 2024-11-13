@@ -57,7 +57,6 @@ function App() {
             isAuthenticated={isAuthenticated}
             onLogout={handleLogout}
           />
-          <Cart />
           <Box sx={{ flexGrow: 1, paddingBottom: '8vh' }}>
             <Outlet />
           </Box>
