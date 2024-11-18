@@ -34,7 +34,6 @@ function SignUp(props) {
               throw new Error("Token is missing in the response.");
           }
   
-          // Initialize login only if the token exists
           Auth.login(token);
   
           if (formState.rememberMe) {
@@ -105,13 +104,6 @@ function SignUp(props) {
                 <FormControlLabel control={<Checkbox name='rememberMe' checked={formState.rememberMe} onChange={handleChange} color='primary' />} label='Remember me'/>
                 <Button type='submit' fullWidth variant='contained' sx={{mt: 1}}>Sign Up</Button>
             </Box>
-            {/* <Grid container justifyContent='space-between' sx={{mt: 1}}>
-                <Grid item>
-                    <Link component={RouterLink} to='/forgot'>
-                    Forgot password?
-                    </Link>
-                </Grid>
-            </Grid> */}
  
           </Paper>
         </Container>
