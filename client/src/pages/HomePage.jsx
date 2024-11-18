@@ -15,7 +15,7 @@ function HomePage() {
             marginTop: 13,
             background:
               "linear-gradient(90deg, #ffffff, #FFBC00, #ff8800, #FFBC00, #ffffff)",
-            backgroundSize: "300% 100%", // Makes the background three times as wide
+            backgroundSize: "300% 100%",
             backgroundClip: "text",
             WebkitBackgroundClip: "text",
             color: "transparent",

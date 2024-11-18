@@ -31,7 +31,8 @@ const router = createBrowserRouter([
         element: <Success />
       }, {
         path: 'dash',
-        element: <Dash />
+        element: 
+            <Dash />
       }, {
         path: 'howitworks',
         element: <HowItWorks />
