@@ -94,7 +94,7 @@ function SignUp(props) {
                     />
                     <TextField
                         name='password'
-                        placeholder='Enter password'
+                        placeholder='Enter password (min 8 characters)'
                         fullWidth
                         required
                         type='password'
